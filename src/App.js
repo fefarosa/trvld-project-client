@@ -3,7 +3,9 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { listLogEntries } from "./API";
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
+import MapForm from './components/MapForm';
+
 
 const App = () => {
   const [logEntries, setLogEntries] = useState([]);
