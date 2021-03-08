@@ -8,8 +8,4 @@ body {
     overflow: hidden;
 }
 
-.marker {
-  height: 25px;
-  width: 25px;
-  transform: translate(-50%, -100%)
-}
+

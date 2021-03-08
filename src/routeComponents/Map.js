@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Map.css"
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
@@ -64,7 +65,7 @@ function Map() {
                 anchor="top"
               >
                 <div>
-                  <p className="title">{element.title}</p>
+                  <h1 className="title">{element.title}</h1>
                 </div>
               </Popup>
             ) : null}
