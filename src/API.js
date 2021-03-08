@@ -1,6 +1,6 @@
 const API_URL = 'http://localhost:4000';
 
 export async function listLogEntries() {
-    const response = await fetch(`${API_URL}/location`);
+    const response = await fetch(`${API_URL}/`);
     return response.json();
 }
