@@ -28,7 +28,7 @@ export default function MapForm(props) {
 				name='description'
 				onChange={props.onChange}
 			/>
-			<Link to='#'>
+			<Link to='/my-list'>
 				<button type='submit' className='btn btn-primary'>
 					Save
 				</button>
