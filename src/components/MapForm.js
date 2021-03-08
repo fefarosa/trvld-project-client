@@ -9,7 +9,7 @@ export default function MapForm(props) {
 			<TextInput
 				label='Title'
 				type='text'
-				id='roomFormName'
+				id='mapFormName'
 				name='name'
 				value={props.name}
 				onChange={props.onChange}
@@ -17,18 +17,18 @@ export default function MapForm(props) {
 			<TextInput
 				label='Image URL'
 				type='text'
-				id='roomFormImage'
+				id='mapFormImage'
 				name='imageUrl'
 				onChange={props.onChange}
 			/>
 			<TextAreaInput
 				label='Description'
 				type='text'
-				id='roomFormDescription'
+				id='mapFormDescription'
 				name='description'
 				onChange={props.onChange}
 			/>
-			<Link to='/'>
+			<Link to='#'>
 				<button type='submit' className='btn btn-primary'>
 					Save
 				</button>
