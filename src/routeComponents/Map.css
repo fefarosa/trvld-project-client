@@ -3,3 +3,25 @@
     width: 25px;
     transform: translate(-50%, -100%)
   }
+  
+  .title {
+      color: #C4656C;
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+  }
+
+.location-image {
+    max-width: 40vw;
+    max-height: 40vh;
+}
+
+.popup {
+    max-width: 50vw;
+    max-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+

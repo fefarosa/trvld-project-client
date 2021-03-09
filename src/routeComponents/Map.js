@@ -1,13 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Map.css"
+import "./Map.css";
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
 import { listLogEntries } from "../API";
+import PostForm from '../components/PostForm'
 
 function Map() {
   const [logEntries, setLogEntries] = useState([]);
   const [showPopup, togglePopup] = useState(false);
+  const [addEntryLocation, setEntryLocation] = useState(null);
   const [viewport, setViewport] = useState({
     latitude: 0,
     longitude: 0,
@@ -24,55 +26,101 @@ function Map() {
     })();
   }, []);
 
+  const showAddMarkerPopup = (event) => {
+    const [ longitude, latitude ] = event.lngLat;
+    setEntryLocation({
+      latitude,
+      longitude,
+    });
+  };
+
   return (
-    <div>
-      <ReactMapGL
-        {...viewport}
-        mapStyle="mapbox://styles/fefarosa/ckm0vfk1e119y17nn9hqged75"
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        onViewportChange={(viewport) => setViewport(viewport)}
-      >
-        {logEntries.map((element) => (
-          <div>
-            <Marker
-              key={element._id}
+    <ReactMapGL
+      {...viewport}
+      mapStyle="mapbox://styles/fefarosa/ckm0vfk1e119y17nn9hqged75"
+      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      onViewportChange={(viewport) => setViewport(viewport)}
+      onDblClick={showAddMarkerPopup}
+    >
+      {logEntries.map((element) => (
+        <div key={element._id}>
+          <Marker
+            key={element._id}
+            latitude={element.latitude}
+            longitude={element.longitude}
+          >
+            <div
+              onClick={() =>
+                togglePopup({
+                  showPopup,
+                  [element._id]: true,
+                })
+              }
+            >
+              <img
+                className="marker"
+                src="https://www.flaticon.com/svg/vstatic/svg/684/684908.svg?token=exp=1615237506~hmac=033f58088512417a3cfca21a1e305c2d"
+                alt="map marker"
+              />
+            </div>
+          </Marker>
+          {showPopup[element._id] ? (
+            <Popup
               latitude={element.latitude}
               longitude={element.longitude}
+              closeButton={true}
+              closeOnClick={false}
+              onClose={() => togglePopup(false)}
+              anchor="top"
             >
-              <div
-                onClick={() =>
-                  togglePopup({
-                    showPopup,
-                    [element._id]: true,
-                  })
-                }
-              >
+              <div className="popup">
+                <h3 className="title">{element.title}</h3>
                 <img
-                  className="marker"
-                  src="https://www.flaticon.com/svg/vstatic/svg/684/684908.svg?token=exp=1615226264~hmac=25a72b361c841c63d9717b4749b664da"
-                  alt="map marker"
+                  className="location-image"
+                  src={element.image}
+                  alt={element.title}
                 />
+                <p>{element.description}</p>
+                <p>When? {new Date(element.startDate).toLocaleDateString()}</p>
+                {element.endDate ? (
+                  <p>until {new Date(element.endDate).toLocaleDateString()}</p>
+                ) : null}
               </div>
-            </Marker>
-            {showPopup[element._id] ? (
-              <Popup
-                key={element.title}
-                latitude={element.latitude}
-                longitude={element.longitude}
-                closeButton={true}
-                closeOnClick={false}
-                onClose={() => togglePopup(false)}
-                anchor="top"
-              >
-                <div>
-                  <h1 className="title">{element.title}</h1>
-                </div>
-              </Popup>
-            ) : null}
+            </Popup>
+          ) : null}
+        </div>
+      ))}
+      {
+        addEntryLocation ? (
+          <>
+          <Marker
+            latitude={addEntryLocation.latitude}
+            longitude={addEntryLocation.longitude}
+          >
+            <img
+              className="marker"
+              src="https://www.flaticon.com/svg/vstatic/svg/684/684908.svg?token=exp=1615237506~hmac=033f58088512417a3cfca21a1e305c2d"
+              alt="map marker"
+            />
+          </Marker>
+          <Popup
+            latitude={addEntryLocation.latitude}
+            longitude={addEntryLocation.longitude}
+            closeButton={true}
+            closeOnClick={false}
+            dynamicPosition={true}
+            onClose={() => setEntryLocation(null)}
+            anchor="top"
+          ><div className="popup">
+          <PostForm 
+              location={addEntryLocation}
+          />
           </div>
-        ))}
-      </ReactMapGL>
-    </div>
+          </Popup>
+       </>
+        ) : null
+      }
+    </ReactMapGL>
   );
 }
 
