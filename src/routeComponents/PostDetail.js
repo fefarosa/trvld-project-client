@@ -1,7 +1,6 @@
 import React from "react";
-import "./MyPosts.css";
 
-function MyPosts() {
+function PostDetail() {
   return (
     <div>
       <nav className="navbar">
@@ -10,13 +9,12 @@ function MyPosts() {
           width="30"
           height="40"
           className="navbar-brand d-inline-block align-top flex-wrap"
-          alt=""
+          alt="pin-icon"
         />
-        Trip(pin)
+        Tri(pin)
       </nav>
-      <h1>My posts</h1>
     </div>
   );
 }
 
-export default MyPosts;
+export default PostDetail;

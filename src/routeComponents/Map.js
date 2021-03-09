@@ -26,6 +26,16 @@ function Map() {
 
   return (
     <div>
+      <nav className="navbar">
+        <img
+          src="https://static.thenounproject.com/png/223148-200.png"
+          width="30"
+          height="40"
+          className="navbar-brand d-inline-block align-top flex-wrap"
+          alt="pin-icon"
+        />
+        Tri(pin)
+      </nav>
       <ReactMapGL
         {...viewport}
         mapStyle="mapbox://styles/fefarosa/ckm0vfk1e119y17nn9hqged75"
