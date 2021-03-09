@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Map.css"
+import "./Map.css";
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
@@ -49,7 +49,7 @@ function Map() {
               >
                 <img
                   className="marker"
-                  src="https://www.flaticon.com/svg/vstatic/svg/684/684908.svg?token=exp=1615226264~hmac=25a72b361c841c63d9717b4749b664da"
+                  src="https://www.flaticon.com/svg/vstatic/svg/684/684908.svg?token=exp=1615237506~hmac=033f58088512417a3cfca21a1e305c2d"
                   alt="map marker"
                 />
               </div>
