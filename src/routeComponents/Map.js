@@ -2,12 +2,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Map.css";
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import axios from "axios";
 
-import { listLogEntries } from "../API";
-import PostForm from '../components/PostForm'
+import PostForm from "../components/PostForm";
 
 function Map() {
-  const [logEntries, setLogEntries] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [showPopup, togglePopup] = useState(false);
   const [addEntryLocation, setEntryLocation] = useState(null);
   const [viewport, setViewport] = useState({
@@ -19,15 +19,22 @@ function Map() {
   });
 
   useEffect(() => {
-    (async () => {
-      const logEntries = await listLogEntries();
-      setLogEntries(logEntries);
-      console.log(logEntries);
-    })();
+    async function fetchPosts() {
+      try {
+        const response = await axios.get("http://localhost:4000/");
+
+        console.log(response);
+
+        setPosts([...response.data]);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchPosts();
   }, []);
 
   const showAddMarkerPopup = (event) => {
-    const [ longitude, latitude ] = event.lngLat;
+    const [longitude, latitude] = event.lngLat;
     setEntryLocation({
       latitude,
       longitude,
@@ -42,7 +49,7 @@ function Map() {
       onViewportChange={(viewport) => setViewport(viewport)}
       onDblClick={showAddMarkerPopup}
     >
-      {logEntries.map((element) => (
+      {posts.map((element) => (
         <div key={element._id}>
           <Marker
             key={element._id}
@@ -90,9 +97,8 @@ function Map() {
           ) : null}
         </div>
       ))}
-      {
-        addEntryLocation ? (
-          <>
+      {addEntryLocation ? (
+        <>
           <Marker
             latitude={addEntryLocation.latitude}
             longitude={addEntryLocation.longitude}
@@ -111,15 +117,19 @@ function Map() {
             dynamicPosition={true}
             onClose={() => setEntryLocation(null)}
             anchor="top"
-          ><div className="popup">
-          <PostForm 
-              location={addEntryLocation}
-          />
-          </div>
+          >
+            <div className="popup">
+              <PostForm
+                onClose={() => {
+                  setEntryLocation(null);
+                //   fetchPosts();
+                }}
+                location={addEntryLocation}
+              />
+            </div>
           </Popup>
-       </>
-        ) : null
-      }
+        </>
+      ) : null}
     </ReactMapGL>
   );
 }
