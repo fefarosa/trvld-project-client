@@ -76,9 +76,12 @@ function Map() {
               <div className="popup">
                 <h3 className="title">{element.title}</h3>
                 <img
-                  className="location-image"
-                  src={element.image}
-                  alt={element.title}
+                  // className="location-image"
+                  // src={element.image}
+                  // alt={element.title}
+                  className="marker"
+                  src="https://www.flaticon.com/svg/vstatic/svg/684/684908.svg?token=exp=1615237506~hmac=033f58088512417a3cfca21a1e305c2d"
+                  alt="map marker"
                 />
                 <p>{element.description}</p>
                 <p>When? {new Date(element.startDate).toLocaleDateString()}</p>

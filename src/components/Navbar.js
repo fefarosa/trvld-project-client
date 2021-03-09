@@ -1,5 +1,6 @@
-import './Navbar.css';
-
+import "./Navbar.css";
+import Homepage from "../routeComponents/Homepage";
+import { Switch } from "react-router";
 
 function Navbar(props) {
   return (
@@ -12,7 +13,7 @@ function Navbar(props) {
           className="navbar-brand d-inline-block align-top flex-wrap"
           alt=""
         />
-        TRVLD
+        Trip(pin)
       </nav>
     </div>
   );
