@@ -5,6 +5,7 @@ import "./postForm.css";
 const PostForm = ({ location, onClose }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const { register, handleSubmitHook } = useForm();
   const [formData, setFormData] = useState({});
 
