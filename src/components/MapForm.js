@@ -11,14 +11,14 @@ export default function MapForm(props) {
 				type='text'
 				id='mapFormName'
 				name='name'
-				value={props.name}
+				value={props.state.name}
 				onChange={props.onChange}
 			/>
 			<TextInput
 				label='Image URL'
-				type='text'
+				type='file'
 				id='mapFormImage'
-				name='imageUrl'
+				name='picture'
 				onChange={props.onChange}
 			/>
 			<TextAreaInput
