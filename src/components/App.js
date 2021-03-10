@@ -10,7 +10,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 //import Navbar from "./Navbar";
 import Homepage from "../routeComponents/Homepage";
 import Map from "../routeComponents/Map";
-// import EditPost from "../routeComponents/EditPost";
+import EditPost from "./EditPost";
 // import Posts from "../routeComponents/MyPosts";
 // import PostDetail from "../routeComponents/PostDetail";
 // import DeletePost from "../routeComponents/DeletePost";
@@ -28,7 +28,7 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/my-map" component={Map} /> {/* Took down PRIVATE route for now, solve with Pedro */}
         {/* <PrivateRoute path="/post/delete/:id" component={DeletePost} /> */}
-        {/* <PrivateRoute path="/post/edit/:id" component={EditPost} /> */}
+        <Route path="/post/edit/:id" component={EditPost} />
         {/* <PrivateRoute exact path="/my-posts" component={Posts} /> */}
         {/* <PrivateRoute exact path="/post-detail" component={PostDetail} /> */}
         <Route exact path="/auth/login" component={Login} />

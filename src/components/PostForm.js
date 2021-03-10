@@ -8,9 +8,9 @@ const PostForm = ({ location, onClose }) => {
   // eslint-disable-next-line no-unused-vars
   const { register, handleSubmitHook } = useForm();
   const [formData, setFormData] = useState({});
+  
 
   async function createPost(entry) {
-    console.log("The body = " + JSON.stringify(entry));
     const response = await fetch(`http://localhost:4000/`, {
       method: "POST",
       headers: {
