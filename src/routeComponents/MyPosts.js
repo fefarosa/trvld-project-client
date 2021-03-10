@@ -53,10 +53,12 @@ function MyPosts() {
 		}
 	}
 
-    return <div>
+    return (
+    <div>
         <h1>My posts</h1>
         <MapForm state={state} onChange={handleChange} handleSubmit={handleSubmit} />
     </div>
-};
+    )
+}
 
 export default MyPosts;

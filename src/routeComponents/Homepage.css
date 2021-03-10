@@ -1,1 +1,38 @@
+body {
+  background-color: rgb(159, 206, 211);
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
 
+.homepage {
+  height: 40vh;
+  margin: 35%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.home-image {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.home-title {
+  height: 20vh;
+  margin: 30%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.info-footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-end;
+  align-content: flex-end;
+}
