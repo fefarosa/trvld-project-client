@@ -33,7 +33,7 @@ function Login(props) {
         JSON.stringify({ ...response.data })
       );
       setErrors({ password: "", email: "" });
-      props.history.push("/book/all");
+      props.history.push("/my-map");
     } catch (err) {
       console.error(err.response);
       setErrors({ ...err.response.data.errors });
@@ -69,10 +69,10 @@ function Login(props) {
       </div>
 
       <div>
-        <button type="submit">Login!</button>
+        <button onClick={handleSubmit} type="submit">log in</button>
 
-        <Link to="/auth/signup">
-          Don't have an account? Click here to signup!
+        <Link to="/signup">
+          don't have an account? click here to signup.
         </Link>
       </div>
     </form>

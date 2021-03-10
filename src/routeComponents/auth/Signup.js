@@ -16,10 +16,10 @@ function Signup(props) {
       [event.currentTarget.name]: event.currentTarget.value,
     });
   }
-
+  
   async function handleSubmit(event) {
     event.preventDefault();
-
+    
     try {
       const response = await api.post("/signup", state);
       setErrors({ name: "", password: "", email: "" });
@@ -36,7 +36,7 @@ function Signup(props) {
       <h1>sign up</h1>
 
       <div>
-        <label htmlFor="signupFormName">Name</label>
+        <label htmlFor="signupFormName">name</label>
         <input
           type="text"
           name="name"
@@ -48,7 +48,7 @@ function Signup(props) {
       </div>
 
       <div>
-        <label htmlFor="signupFormEmail">E-mail Address</label>
+        <label htmlFor="signupFormEmail">e-mail Address</label>
         <input
           type="email"
           name="email"
@@ -72,10 +72,10 @@ function Signup(props) {
       </div>
 
       <div>
-        <button type="submit">Signup!</button>
+        <button type="submit">sign up</button>
 
-        <Link to="/auth/login">
-          Already have an account? Click here to login.
+        <Link to="/login">
+          already have an account? click here to login.
         </Link>
       </div>
     </form>
