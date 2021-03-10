@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import api from "../../apis/api";
+import "./Login.css";
 
 import { AuthContext } from "../../contexts/authContext";
 
@@ -45,7 +46,9 @@ function Login(props) {
       <h1>Login</h1>
 
       <div>
-        <label htmlFor="signupFormEmail">E-mail Address</label>
+        <label className="label" htmlFor="signupFormEmail">
+          e-mail
+        </label>
         <input
           type="email"
           name="email"
@@ -57,7 +60,9 @@ function Login(props) {
       </div>
 
       <div>
-        <label htmlFor="signupFormPassword">Password</label>
+        <label className="label" htmlFor="signupFormPassword">
+          password
+        </label>
         <input
           type="password"
           name="password"
@@ -68,11 +73,13 @@ function Login(props) {
         />
       </div>
 
-      <div>
-        <button onClick={handleSubmit} type="submit">log in</button>
+      <div className="div-button">
+        <div className="btn">
+          <button type="submit">Login!</button>
+        </div>
 
         <Link to="/signup">
-          don't have an account? click here to signup.
+        don't have an account? click here to signup.
         </Link>
       </div>
     </form>
