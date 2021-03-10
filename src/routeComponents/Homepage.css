@@ -14,18 +14,17 @@ body {
   flex-direction: column;
 }
 
-.home-image {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
 .home-title {
   height: 20vh;
   margin: 30%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-title img {
+  height: 20vh;
 }
 
 .info-footer {
@@ -33,6 +32,18 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: flex-end;
-  align-content: flex-end;
+  align-items: center;
+  align-content: center;
+}
+
+.github-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.github-box a {
+  text-decoration: none;
+  
 }

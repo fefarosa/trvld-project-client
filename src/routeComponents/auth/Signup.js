@@ -23,7 +23,8 @@ function Signup(props) {
     try {
       const response = await api.post("/signup", state);
       setErrors({ name: "", password: "", email: "" });
-      props.history.push("/auth/login");
+      props.history.push("/my-map");
+      console.log(response);
     } catch (err) {
       console.error(err.response);
       setErrors({ ...err.response.data.errors });
@@ -32,7 +33,7 @@ function Signup(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Signup!</h1>
+      <h1>sign up</h1>
 
       <div>
         <label htmlFor="signupFormName">Name</label>
