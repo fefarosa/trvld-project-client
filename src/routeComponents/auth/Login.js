@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import api from "../../apis/api";
-import './Login.css';
+import "./Login.css";
 
 import { AuthContext } from "../../contexts/authContext";
 
@@ -34,7 +34,7 @@ function Login(props) {
         JSON.stringify({ ...response.data })
       );
       setErrors({ password: "", email: "" });
-      props.history.push("/book/all");
+      props.history.push("/my-map");
     } catch (err) {
       console.error(err.response);
       setErrors({ ...err.response.data.errors });
@@ -46,7 +46,9 @@ function Login(props) {
       <h1>Login</h1>
 
       <div>
-        <label className='label' htmlFor="signupFormEmail">e-mail</label>
+        <label className="label" htmlFor="signupFormEmail">
+          e-mail
+        </label>
         <input
           type="email"
           name="email"
@@ -58,7 +60,9 @@ function Login(props) {
       </div>
 
       <div>
-        <label className='label' htmlFor="signupFormPassword">password</label>
+        <label className="label" htmlFor="signupFormPassword">
+          password
+        </label>
         <input
           type="password"
           name="password"
@@ -69,11 +73,13 @@ function Login(props) {
         />
       </div>
 
-      <div className='div-button'>
-        <div className='btn'><button type="submit">Login!</button></div>
+      <div className="div-button">
+        <div className="btn">
+          <button type="submit">Login!</button>
+        </div>
 
-        <Link className='link' to="/auth/signup">
-          Don't have an account? Click here to signup!
+        <Link to="/signup">
+        don't have an account? click here to signup.
         </Link>
       </div>
     </form>

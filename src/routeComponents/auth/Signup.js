@@ -17,10 +17,10 @@ function Signup(props) {
       [event.currentTarget.name]: event.currentTarget.value,
     });
   }
-
+  
   async function handleSubmit(event) {
     event.preventDefault();
-
+    
     try {
       const response = await api.post("/signup", state);
       setErrors({ name: "", password: "", email: "" });
@@ -34,8 +34,7 @@ function Signup(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-
-      <div >
+      <div>
         <div><label htmlFor="signupFormName">name</label></div>
         <input
           type="text"
@@ -70,12 +69,10 @@ function Signup(props) {
           onChange={handleChange}
         />
       </div>
-
       <div className='div-button'>
-        <button className='btn' type="submit">Done!</button>
-
-        <Link className='link' to="/auth/login">
-          Already have an account? Click here to login.
+        <button className='btn' type="submit">sign up</button>
+        <Link className='link' to="/login">
+        already have an account? click here to login.
         </Link>
       </div>
     </form>

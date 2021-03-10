@@ -1,8 +1,11 @@
 import React from "react";
 import "./Homepage.css";
+
+import { Link } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import github from '../images/github.png';
 import pin from '../images/pin.png';
+
 
 
 function Homepage() {
@@ -14,17 +17,15 @@ function Homepage() {
         <h1>trip(pin)</h1>
       </div>
       <div className="btn-link">
-        <a href="/auth/signup">
-          sign in
-        </a>
+        <Link to="/login">log in</Link>
         <br />
-        <a href="/auth/login">
-          log in
-        </a>
+        <Link to="/signup">sign up</Link>
       </div>
       <div className="instructions">
-        <p>Record everywhere you've visited.</p>
-        <p><strong>Double click on the map</strong> to create a new memory.</p>
+        <p>record everywhere you've visited.</p>
+        <p>
+          <strong>double click on the map</strong> to create a new memory.
+        </p>
       </div>
       <div className="info-footer">
       <div className="github-box">
