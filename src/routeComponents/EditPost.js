@@ -6,34 +6,32 @@ import { useEffect } from "react";
 import api from "../../apis/api";
 
 function EditPost() {
-    const [state, setState] = useState({
-        title: "",
-        image: "",
-        description: "",
-        startDate: "",
-        endDate: "",
-        updatedAt: "",
-    })
+  const [state, setState] = useState({
+    title: "",
+    image: "",
+    description: "",
+    startDate: "",
+    endDate: "",
+    updatedAt: "",
+  });
 
-    const { id } = useParams();
-    const history = useHistory();
+  const { id } = useParams();
+  const history = useHistory();
 
-    useEffect(() => {
-        async function fetchData() {
-          try {
-            const response = await api.get(`/post/${id}`);
-    
-            setState({ ...response.data });
-          } catch (err) {
-            console.error(err);
-          }
-        }
-        fetchData();
-      }, [id]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await api.get(`/post/${id}`);
 
-    return (
+        setState({ ...response.data });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchData();
+  }, [id]);
 
-    )
-};
+  return <div></div>;
+}
 
 export default EditPost;
