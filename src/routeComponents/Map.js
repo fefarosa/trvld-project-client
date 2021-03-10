@@ -1,11 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Map.css";
+import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import axios from "axios";
 
 import Navbar from "../components/Navbar";
-import PostForm from "./PostForm";
+import PostForm from "../components/PostForm";
+import EditPost from "../components/EditPost";
+import api from "../apis/api";
 
 export default function Map() {
   const [posts, setPosts] = useState([]);
@@ -13,6 +16,7 @@ export default function Map() {
   const [addEntryLocation, setEntryLocation] = useState(null);
   // eslint-disable-next-line no-unused-vars
   const [refreshKey, setRefreshKey] = useState(0);
+  const [editEntry, setEditEntry] = useState(false);
   const [viewport, setViewport] = useState({
     latitude: 0,
     longitude: 0,
@@ -20,7 +24,7 @@ export default function Map() {
     width: "100vw",
     zoom: 1,
   });
-
+  
   useEffect(() => {
     getPosts();
   }, [refreshKey]);
@@ -43,8 +47,17 @@ export default function Map() {
       latitude,
       longitude,
     });
-    console.log("Entry location = " + JSON.stringify(setEntryLocation));
   };
+
+  const handleDelete = async (id) => {
+      try {
+        const response = await api.delete(`/post/${id}`);
+        console.log(response)
+        getPosts()
+      } catch(err) {
+          console.error(err)
+      }
+  }
 
   return (
     <ReactMapGL
@@ -63,13 +76,7 @@ export default function Map() {
               latitude={element.latitude}
               longitude={element.longitude}
             >
-              <div
-                onClick={() =>
-                  togglePopup({
-                    [element._id]: true,
-                  })
-                }
-              >
+              <div onClick={() =>togglePopup({[element._id]: true,})}>
                 <img
                   className="marker"
                   src="https://www.flaticon.com/svg/vstatic/svg/3754/3754710.svg?token=exp=1615371131~hmac=db6fa8c73f848988c24b2131fe977b67"
@@ -84,16 +91,14 @@ export default function Map() {
                 closeButton={true}
                 closeOnClick={false}
                 onClose={() => togglePopup(false)}
-                anchor="top"
-              >
-                <div className="popup">
+                anchor="top">
+                {!editEntry ? <div className="popup">
                   <h3 className="title">{element.title}</h3>
                   {element.image ? (
                     <img
                       className="location-image"
                       src={element.image}
-                      alt={element.title}
-                    />
+                      alt={element.title}/>
                   ) : (
                     <img
                       className="pin-marker"
@@ -106,12 +111,15 @@ export default function Map() {
                   {element.updatedAt !== element.createdAt ? 
                   <p className="created-at">{new Date(element.updatedAt).toLocaleDateString}</p> : null}
                   <div className="buttons">
-                      <button className="edit">edit post</button>
-                      <button className="delete">delete post</button>
+                      <button onClick={() => {setEditEntry(true)}}>edit post</button>
+                      <button onClick={() => {handleDelete(element._id)}}>delete post</button>
                   </div>
-                </div>
-              </Popup>
-            ) : null}
+                </div> : 
+                <EditPost 
+                    currentPost={element}
+                    setEditEntry={setEditEntry}
+                />}
+              </Popup>) : null}
           </React.Fragment>
         </>
       ))}
@@ -148,6 +156,7 @@ export default function Map() {
           </Popup>
         </>
       ) : null}
+      
     </ReactMapGL>
   );
 }
