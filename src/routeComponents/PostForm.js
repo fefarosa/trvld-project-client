@@ -50,25 +50,26 @@ const PostForm = ({ location, onClose }) => {
     <form className="post-form" onSubmit={handleSubmit}>
       {error ? <h3 className="error">{error}</h3> : null}
       <label htmlFor="title" ref={register}>
-        Title*
+        title*
       </label>
       <input name="title" required onChange={handleChange} />
       <label htmlFor="image" ref={register}>
-        Image
+        image
       </label>
       <input name="picture" onChange={handleChange} />
       <label htmlFor="description" ref={register}>
-        Description
+        description
       </label>
       <textarea name="description" rows={4} onChange={handleChange} />
       <label htmlFor="startDate" ref={register}>
-        Start Date*
+        start date*
       </label>
       <input name="startDate" type="date" required onChange={handleChange} />
       <label htmlFor="endDate" ref={register}>
-        End Date
+        end date
       </label>
       <input name="endDate" type="date" onChange={handleChange} />
+      <p className="mandatory-items">* these fields need to be filled out</p>
       <button disabled={loading}>
         {loading ? "Loading..." : "Add pin 📌"}
       </button>

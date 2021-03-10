@@ -1,9 +1,9 @@
-function Post(props) {
-  return (
-    <div>
-      <p className="title">title</p>
-    </div>
-  );
-}
+// function Post(props) {
+//   return (
+//     <div>
+//       <p className="title">title</p>
+//     </div>
+//   );
+// }
 
-export default Post;
+// export default Post;

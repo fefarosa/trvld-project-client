@@ -1,19 +1,22 @@
 .marker {
     height: 25px;
     width: 25px;
-    transform: translate(-50%, -100%)
+    transform: translate(-50%, -100%);
+    z-index: -1;
   }
   
-  .title {
-      color: #C4656C;
-      font-size: 14px;
-      display: flex;
-      justify-content: center;
+.title {
+    color: #C4656C;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
   }
 
-.location-image {
+.location-image,
+.pin-marker {
     max-width: 40vw;
     max-height: 40vh;
+    z-index: 0;
 }
 
 .popup {
@@ -23,5 +26,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 }
 
+.dates {
+    margin: 0;
+}
+
+.buttons {
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
