@@ -2,7 +2,7 @@ import axios from "axios";
 
 const apis = {
   development: "http://localhost:4000",
-  production: "A URL DO SEU SERVIDOR DEPLOYADO NO HEROKU AQUI",
+  production: "https://trippin-ironhack.herokuapp.com",
 };
 
 const api = axios.create({
