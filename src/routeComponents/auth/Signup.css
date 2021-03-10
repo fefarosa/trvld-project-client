@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;900&display=swap');
+
+
+form div {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    
+}
+
+.div-button button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(252, 168, 11);
+    color: black;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    border-radius: 20px;
+}
+
+.div-button {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.link {
+    margin: 10px;
+    text-align: center;
+}
+

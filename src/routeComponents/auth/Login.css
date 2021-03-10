@@ -1,0 +1,8 @@
+.btn {
+    display: flex;
+    text-align: center;
+}
+
+.label {
+    padding: 10px;
+}
