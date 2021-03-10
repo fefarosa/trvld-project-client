@@ -1,50 +1,59 @@
 import React from "react";
 import "./Homepage.css";
+import Navbar from '../components/Navbar';
+import github from '../images/github.png';
+import pin from '../images/pin.png';
+
 
 function Homepage() {
   return (
     <div>
-      <img
-        className="home-image"
-        src="https://static.thenounproject.com/png/223148-200.png"
-        width="70"
-        height="70"
-        alt="pin-icon"
-      />
+      <Navbar />
       <div className="home-title">
-        <h1>Tri(pin)</h1>
+      <img src={pin} alt="map marker" />
+        <h1>trip(pin)</h1>
       </div>
       <div className="btn-link">
-        <button type="button" class="btn btn-orange">
-          sing in
-        </button>
+        <a href="/auth/signup">
+          sign in
+        </a>
         <br />
-        <button type="button" class="btn btn-orange">
+        <a href="/auth/login">
           log in
-        </button>
+        </a>
+      </div>
+      <div className="instructions">
+        <p>Record everywhere you've visited.</p>
+        <p><strong>Double click on the map</strong> to create a new memory.</p>
       </div>
       <div className="info-footer">
+      <div className="github-box">
         <img
-          src="https://www.flaticon.com/svg/vstatic/svg/1051/1051377.svg?token=exp=1615299937~hmac=2508d272fe76e5b2326f4d393966b3f7"
+          src={github}
           width="30"
           height="30"
           alt="github-icon"
         />
-        <button type="button" class="btn btn-orange">EduLp99</button>
+        <a href="https://github.com/EduLp99">EduLp99</a>
+        </div>
+        <div className="github-box">
         <img
-          src="https://www.flaticon.com/svg/vstatic/svg/1051/1051377.svg?token=exp=1615299937~hmac=2508d272fe76e5b2326f4d393966b3f7"
+          src={github}
           width="30"
           height="30"
           alt="github-icon"
         />
-        <button type="button" class="btn btn-orange">fefarosa</button>
+        <a href="https://github.com/fefarosa">fefarosa</a>
+        </div>
+        <div className="github-box">
         <img
-          src="https://www.flaticon.com/svg/vstatic/svg/1051/1051377.svg?token=exp=1615299937~hmac=2508d272fe76e5b2326f4d393966b3f7"
+          src={github}
           width="30"
           height="30"
           alt="github-icon"
         />
-        <button type="button" class="btn btn-orange">Suellenhf</button>
+        <a href="https://github.com/Suellenhf">Suellenhf</a>
+        </div>
       </div>
     </div>
   );

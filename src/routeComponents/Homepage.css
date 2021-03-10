@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;900&display=swap');
 body {
   background-color: rgb(159, 206, 211);
   margin: 0;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
 }
 
 .homepage {
@@ -14,18 +17,24 @@ body {
   flex-direction: column;
 }
 
-.home-image {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
 .home-title {
-  height: 20vh;
+  height: 18vh;
   margin: 30%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+}
+
+.home-title h1 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+} 
+
+.home-title img {
+  height: 20vh;
 }
 
 .info-footer {
@@ -33,6 +42,37 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: flex-end;
-  align-content: flex-end;
+  align-items: center;
+  align-content: center;
+}
+
+.github-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.github-box a {
+  text-decoration: none;
+  
+}
+
+.btn-link {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.btn-link a {
+  background-color: rgb(252, 168, 11);
+  color: black;
+  border-radius: 10px;
+  width: 80px;
+  text-align: center;
+}
+
+.instructions {
+  text-align: center;
 }
