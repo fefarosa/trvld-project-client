@@ -14,7 +14,7 @@ function EditPost(props) {
   const history = useHistory();
 
   function handleChange(event) {
-    setState([event.target.name] = event.target.value);
+    setState({...state, [event.target.name]: event.target.value});
   }
 
   async function handleSubmit(event) {
@@ -24,9 +24,8 @@ function EditPost(props) {
       const response = await api.patch(`/post/${props.currentPost._id}`, {
         ...state,
       });
-      console.log(response);
-
-      history.push("/my-map");
+      props.onClose()
+      
     } catch (err) {
       console.error(err);
     }
@@ -48,15 +47,11 @@ function EditPost(props) {
           description
         </label>
         <textarea name="description" value={state.description} rows={4} onChange={handleChange} />
-        <label htmlFor="startDate" ref={register}>
-          start date*
+        <label htmlFor="visitDate" ref={register}>
+          visit date
         </label>
-        <input name="startDate" value={state.startDate} type="date" required onChange={handleChange} />
-        <label htmlFor="endDate" ref={register}>
-          end date
-        </label>
-        <input name="endDate" value={state.endDate} type="date" onChange={handleChange} />
-        <p className="mandatory-items">* these fields need to be filled out</p>
+        <input name="visitDate" value={new Date(state.visitDate).toLocaleDateString()} type="date" onChange={handleChange} />
+        <p className="mandatory-items">* this field needs to be filled out</p>
         <button disabled={loading}>
           {loading ? "Loading..." : "submit edited pin 📌"}
         </button>

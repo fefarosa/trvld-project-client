@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import axios from "axios";
 
-import Navbar from "../components/Navbar";
+import NavbarMyMap from "../components/NavbarMyMap";
 import PostForm from "../components/PostForm";
 import EditPost from "../components/EditPost";
 import api from "../apis/api";
@@ -23,7 +23,7 @@ export default function Map() {
     width: "100vw",
     zoom: 1,
   });
-  
+
   useEffect(() => {
     getPosts();
   }, [refreshKey]);
@@ -47,14 +47,14 @@ export default function Map() {
   };
 
   const handleDelete = async (id) => {
-      try {
-        const response = await api.delete(`/post/${id}`);
-        console.log(response)
-        getPosts()
-      } catch(err) {
-          console.error(err)
-      }
-  }
+    try {
+      const response = await api.delete(`/post/${id}`);
+      console.log(response);
+      getPosts();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <ReactMapGL
@@ -64,15 +64,11 @@ export default function Map() {
       onViewportChange={(viewport) => setViewport(viewport)}
       onDblClick={showAddMarkerPopup}
     >
-      <Navbar />
+      <NavbarMyMap />
       {posts.map((element) => (
-        <>
           <React.Fragment key={element._id}>
-            <Marker
-              latitude={element.latitude}
-              longitude={element.longitude}
-            >
-              <div onClick={() =>togglePopup({[element._id]: true,})}>
+            <Marker latitude={element.latitude} longitude={element.longitude}>
+              <div onClick={() => togglePopup({ [element._id]: true })}>
                 <img
                   className="marker"
                   src="https://www.flaticon.com/svg/vstatic/svg/3754/3754710.svg?token=exp=1615371131~hmac=db6fa8c73f848988c24b2131fe977b67"
@@ -87,37 +83,68 @@ export default function Map() {
                 closeButton={true}
                 closeOnClick={false}
                 onClose={() => togglePopup(false)}
-                anchor="top">
-                {!editEntry ? <div className="popup">
-                  <h3 className="title">{element.title}</h3>
-                  {element.image ? (
-                    <img
-                      className="location-image"
-                      src={element.image}
-                      alt={element.title}/>
-                  ) : (
-                    <img
-                      className="pin-marker"
-                      src="https://www.flaticon.com/svg/vstatic/svg/3754/3754022.svg?token=exp=1615371133~hmac=c4afcc8f7ed4a15a0076c83783cd76f3"
-                      alt="map marker"/>)}
-                  <p className="description">{element.description}</p>
-                  <p className="dates">when? {new Date(element.startDate).toLocaleDateString()}</p>
-                  {element.endDate ? (<p className="dates">until {new Date(element.endDate).toLocaleDateString()}</p>) : null}
-                  <p className="created-at">post created at {new Date(element.createdAt).toLocaleDateString()}</p>
-                  {element.updatedAt !== element.createdAt ? 
-                  <p className="created-at">{new Date(element.updatedAt).toLocaleDateString()}</p> : null}
-                  <div className="buttons">
-                      <button onClick={() => {setEditEntry(true)}}>edit post</button>
-                      <button onClick={() => {handleDelete(element._id)}}>delete post</button>
+                anchor="top"
+              >
+                {!editEntry ? (
+                  <div className="popup">
+                    <h3 className="title">{element.title}</h3>
+                    {element.image ? (
+                      <img
+                        className="location-image"
+                        src={element.picture}
+                        alt={element.title}
+                      />
+                    ) : (
+                      <img
+                        className="pin-marker"
+                        src="https://www.flaticon.com/svg/vstatic/svg/3754/3754022.svg?token=exp=1615371133~hmac=c4afcc8f7ed4a15a0076c83783cd76f3"
+                        alt="map marker"
+                      />
+                    )}
+                    <p className="description">{element.description}</p>
+                    <p className="dates">
+                      when? {new Date(element.visitDate).toLocaleDateString()}
+                    </p>
+                    <p className="created-at">
+                      post created at{" "}
+                      {new Date(element.createdAt).toLocaleDateString()}
+                    </p>
+                    {element.updatedAt !== element.createdAt ? (
+                      <p className="created-at">
+                        updates at {new Date(element.updatedAt).toLocaleDateString()}
+                      </p>
+                    ) : null}
+                    <div className="buttons">
+                      <button
+                        onClick={() => {
+                          setEditEntry(true);
+                        }}
+                      >
+                        edit post
+                      </button>
+                      <button
+                        onClick={() => {
+                          handleDelete(element._id);
+                        }}
+                      >
+                        delete post
+                      </button>
+                    </div>
                   </div>
-                </div> : 
-                <EditPost 
-                    currentPost={element}
-                    setEditEntry={setEditEntry}
-                />}
-              </Popup>) : null}
+                ) : (
+                  <EditPost 
+                  currentPost={element} 
+                  setEditEntry={setEditEntry}
+                  onClose={() => {
+                  setEntryLocation(null);
+                  setRefreshKey((oldKey) => oldKey + 1);
+                  getPosts();
+                }}
+                   />
+                )}
+              </Popup>
+            ) : null}
           </React.Fragment>
-        </>
       ))}
       {addEntryLocation ? (
         <>
@@ -152,7 +179,6 @@ export default function Map() {
           </Popup>
         </>
       ) : null}
-      
     </ReactMapGL>
   );
 }

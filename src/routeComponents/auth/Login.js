@@ -6,12 +6,14 @@ import enter from "../../images/enter.png";
 import { AuthContext } from "../../contexts/authContext";
 
 import TextInput from "../../components/TextInput";
+import Navbar from "../../components/Navbar";
 import api from "../../apis/api";
 
 function Login(props) {
   const authContext = useContext(AuthContext);
   const [state, setState] = useState({ password: "", email: "" });
-  const [errors, setErrors] = useState({
+  // eslint-disable-next-line no-unused-vars
+  const [error, setErrors] = useState({
     email: null,
     password: null,
   });
@@ -44,9 +46,11 @@ function Login(props) {
   }
 
   return (
+    <div>
+    <Navbar />
+      <h1>log in</h1>
     <form onSubmit={handleSubmit}>
       <img src={enter} alt="login" />
-      <h1>login</h1>
       <TextInput
         label="e-mail"
         name="email"
@@ -72,6 +76,7 @@ function Login(props) {
         <Link to="/signup">don't have an account? click here to signup.</Link>
       </div>
     </form>
+    </div>
   );
 }
 
