@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import axios from "axios";
 
-import Navbar from "../components/Navbar";
+import NavbarMyMap from "../components/NavbarMyMap";
 import PostForm from "../components/PostForm";
 import EditPost from "../components/EditPost";
 import api from "../apis/api";
@@ -24,7 +24,7 @@ export default function Map() {
     width: "100vw",
     zoom: 1,
   });
-  
+
   useEffect(() => {
     getPosts();
   }, [refreshKey]);
@@ -32,8 +32,6 @@ export default function Map() {
   const getPosts = async () => {
     try {
       const response = await axios.get("http://localhost:4000/");
-
-      console.log(response);
 
       setPosts(response.data);
     } catch (err) {
@@ -50,14 +48,14 @@ export default function Map() {
   };
 
   const handleDelete = async (id) => {
-      try {
-        const response = await api.delete(`/post/${id}`);
-        console.log(response)
-        getPosts()
-      } catch(err) {
-          console.error(err)
-      }
-  }
+    try {
+      const response = await api.delete(`/post/${id}`);
+      console.log(response);
+      getPosts();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <ReactMapGL
@@ -67,16 +65,11 @@ export default function Map() {
       onViewportChange={(viewport) => setViewport(viewport)}
       onDblClick={showAddMarkerPopup}
     >
-      <Navbar />
+      <NavbarMyMap />
       {posts.map((element) => (
-        <>
           <React.Fragment key={element._id}>
-            <Marker
-              key={element._id}
-              latitude={element.latitude}
-              longitude={element.longitude}
-            >
-              <div onClick={() =>togglePopup({[element._id]: true,})}>
+            <Marker latitude={element.latitude} longitude={element.longitude}>
+              <div onClick={() => togglePopup({ [element._id]: true })}>
                 <img
                   className="marker"
                   src={pinBlack}
@@ -95,17 +88,11 @@ export default function Map() {
                 {!editEntry ? <div className="popup">
                   <h3 className="title">{element.title}</h3>
                   {element.image ? (
-                    <img
-                      className="location-image"
-                      src={element.image}
-                      alt={element.title}/>
+                    <img className="location-image" src={element.image} alt={element.title}/>
                   ) : (
-                    <img
-                      className="pin-marker"
-                      src={pinBlack}
-                      alt="map marker"/>)}
+                    <img className="pin-marker" src={pinBlack} alt="map marker"/>)}
                   <p className="description">{element.description}</p>
-                  <p className="dates">when? {new Date(element.startDate).toLocaleDateString()}</p>
+                  <p className="dates">when? {new Date(element.visitDate).toLocaleDateString()}</p>
                   {element.endDate ? (<p className="dates">until {new Date(element.endDate).toLocaleDateString()}</p>) : null}
                   <p className="created-at">post created at {new Date(element.createdAt).toLocaleDateString}</p>
                   {element.updatedAt !== element.createdAt ? 
@@ -114,14 +101,18 @@ export default function Map() {
                       <button onClick={() => {setEditEntry(true)}}>edit post</button>
                       <button onClick={() => {handleDelete(element._id)}}>delete post</button>
                   </div>
-                </div> : 
-                <EditPost 
-                    currentPost={element}
-                    setEditEntry={setEditEntry}
+                ) : (
+                  <EditPost 
+                  currentPost={element} 
+                  setEditEntry={setEditEntry}
+                  onClose={() => {
+                  setEntryLocation(null);
+                  setRefreshKey((oldKey) => oldKey + 1);
+                  getPosts();
+                }}
                 />}
               </Popup>) : null}
           </React.Fragment>
-        </>
       ))}
       {addEntryLocation ? (
         <>
@@ -156,7 +147,6 @@ export default function Map() {
           </Popup>
         </>
       ) : null}
-      
     </ReactMapGL>
   );
 }

@@ -2,3 +2,8 @@
     background-color: rgb(159, 206, 211);
     z-index: 1;
 }
+
+.navbar img {
+    height: 40px;
+    width: auto;
+}

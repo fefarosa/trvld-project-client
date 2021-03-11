@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import api from "../apis/api";
-import "./postForm.css";
+import "./PostForm.css";
 
 const PostForm = ({ location, onClose }) => {
   const [loading, setLoading] = useState(false);
@@ -9,8 +9,7 @@ const PostForm = ({ location, onClose }) => {
   // eslint-disable-next-line no-unused-vars
   const { register, handleSubmitHook } = useForm();
   const [formData, setFormData] = useState({});
-  
-
+    
   async function createPost(entry) {
     const response = await fetch(`http://localhost:4000/`, {
       method: "POST",
@@ -52,6 +51,7 @@ async function handleFileUpload(file) {
       formData.longitude = location.longitude;
       const created = createPost(formData);
       console.log(created);
+      // handleFileUpload(formData.image);
       onClose();
     } catch (err) {
       console.error(err);
@@ -70,22 +70,18 @@ async function handleFileUpload(file) {
       <label htmlFor="image" ref={register}>
         image
       </label>
-      <input name="picture" type="file" onChange={handleChange} />
+      <input name="image" type="file" onChange={handleChange} />
       <label htmlFor="description" ref={register}>
         description
       </label>
       <textarea name="description" rows={4} onChange={handleChange} />
-      <label htmlFor="startDate" ref={register}>
-        start date*
+      <label htmlFor="visitDate" ref={register}>
+        visit date
       </label>
-      <input name="startDate" type="date" required onChange={handleChange} />
-      <label htmlFor="endDate" ref={register}>
-        end date
-      </label>
-      <input name="endDate" type="date" onChange={handleChange} />
+      <input name="visitDate" type="date" onChange={handleChange} />
       <p className="mandatory-items">* these fields need to be filled out</p>
       <button disabled={loading}>
-        {loading ? "Loading..." : "Add pin 📌"}
+        {loading ? "Loading..." : "add pin 📌"}
       </button>
     </form>
   );

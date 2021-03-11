@@ -7,17 +7,12 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-//import Navbar from "./Navbar";
 import Homepage from "../routeComponents/Homepage";
 import Map from "../routeComponents/Map";
-import EditPost from "./EditPost";
-// import Posts from "../routeComponents/MyPosts";
-// import PostDetail from "../routeComponents/PostDetail";
-// import DeletePost from "../routeComponents/DeletePost";
 import Login from "../routeComponents/auth/Login";
 import Signup from "../routeComponents/auth/Signup";
 
-import PrivateRoute from "../routeComponents/auth/PrivateRoute";
+// import PrivateRoute from "../routeComponents/auth/PrivateRoute";
 import { AuthContextComponent } from "../contexts/authContext";
 
 function App() {
@@ -26,11 +21,15 @@ function App() {
     <AuthContextComponent>
       <Switch>
         <Route exact path="/" component={Homepage} />
+<<<<<<< HEAD
+        <Route exact path="/my-map" component={Map} />
+=======
         <Route exact path="/my-map" component={Map} /> {/* Took down PRIVATE route for now, solve with Pedro */}
         {/* <PrivateRoute path="/post/delete/:id" component={DeletePost} /> */}
         <Route path="/post/edit/:id" component={EditPost} />
         {/* <PrivateRoute exact path="/my-posts" component={Posts} /> */}
         {/* <PrivateRoute exact path="/post-detail" component={PostDetail} /> */}
+>>>>>>> master
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
       </Switch>

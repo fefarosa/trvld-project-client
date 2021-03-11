@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./Signup.css";
 import { Link } from "react-router-dom";
+
+import "./Signup.css";
+import TextInput from "../../components/TextInput";
 import api from "../../apis/api";
-import './Signup.css';
-import caneta from '../../images/caneta.png';
+import caneta from "../../images/caneta.png";
+import Navbar from "../../components/Navbar";
 
 function Signup(props) {
   const [state, setState] = useState({ name: "", password: "", email: "" });
-  const [errors, setErrors] = useState({
+  const [error, setErrors] = useState({
     name: null,
     email: null,
     password: null,
@@ -18,70 +22,78 @@ function Signup(props) {
       [event.currentTarget.name]: event.currentTarget.value,
     });
   }
-  
+
   async function handleSubmit(event) {
     event.preventDefault();
-    
+
     try {
       const response = await api.post("/signup", state);
       setErrors({ name: "", password: "", email: "" });
       props.history.push("/my-map");
-      console.log(response);
+      console.log(response)
     } catch (err) {
       console.error(err.response);
-      setErrors({ ...err.response.data.errors });
+      setErrors({ ...error, ...err.response.data.errors });
     }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
     <div>
-      <img src={caneta} alt='caneta' />
+    <Navbar />
+      <h1>sign up</h1>
+      <form onSubmit={handleSubmit}>
+        <img src={caneta} alt="caneta" />
+        <div className="center">
+          <div className="div-input">
+            <TextInput
+              label="name"
+              name="name"
+              type="text"
+              id="signupFormName"
+              value={state.name}
+              onChange={handleChange}
+              error={error.name}
+            />
+
+            <TextInput
+              label="e-mail"
+              name="email"
+              type="email"
+              id="signupFormEmail"
+              value={state.email}
+              onChange={handleChange}
+              error={error.email}
+            />
+
+            <TextInput
+              label="password"
+              name="password"
+              type="password"
+              id="signupFormPassword"
+              value={state.password}
+              onChange={handleChange}
+              hint="password must be at least 8 characters long, must include at least one uppercase letter, one lowercase letter, one number and one special character."
+              error={error.password}
+            />
+
+            {/* {error ? (
+              <small className="form-text invalid-feedback">
+                {error}
+              </small>
+            ) : null} */}
+
+            <div className="div-button">
+              <button className="btn" type="submit">
+                sign up
+              </button>
+              <Link className="link" to="/login">
+                already have an account? click here to login.
+              </Link>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
-      <div className='center'>
-      <div className='div-input'>
-        <label htmlFor="signupFormName">name</label>
-        <input
-          type="text"
-          name="name"
-          id="signupFormName"
-          value={state.name}
-          error={errors.name}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div className='div-input'> 
-        <label htmlFor="signupFormEmail">e-mail</label>
-        <input
-          type="email"
-          name="email"
-          id="signupFormEmail"
-          value={state.email}
-          error={errors.email}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div className='div-input'>
-        <label htmlFor="signupFormPassword">password</label>
-        <input
-          type="password"
-          name="password"
-          id="signupFormPassword"
-          value={state.password}
-          error={errors.password}
-          onChange={handleChange}
-        />
-      </div>
-      </div>
-      <div className='div-button'>
-        <div className='btn'><button type="submit">sign up</button></div>
-        <Link className='link' to="/login">
-        already have an account? click here to login.
-        </Link>
-      </div>
-    </form>
   );
 }
 

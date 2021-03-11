@@ -1,3 +1,5 @@
+
+
 .btn {
     display: flex;
     text-align: center;
@@ -22,7 +24,7 @@ img {
 .div-input {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 100vw;
     align-items: center;
 }
 .center {
