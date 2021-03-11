@@ -85,7 +85,7 @@ export default function Map() {
                 closeOnClick={false}
                 onClose={() => togglePopup(false)}
                 anchor="top">
-                {!editEntry ? <div className="popup">
+                {!editEntry ? (<div className="popup">
                   <h3 className="title">{element.title}</h3>
                   {element.image ? (
                     <img className="location-image" src={element.image} alt={element.title}/>
@@ -94,14 +94,14 @@ export default function Map() {
                   <p className="description">{element.description}</p>
                   <p className="dates">when? {new Date(element.visitDate).toLocaleDateString()}</p>
                   {element.endDate ? (<p className="dates">until {new Date(element.endDate).toLocaleDateString()}</p>) : null}
-                  <p className="created-at">post created at {new Date(element.createdAt).toLocaleDateString}</p>
+                  <p className="created-at">post created at {new Date(element.createdAt).toLocaleDateString()}</p>
                   {element.updatedAt !== element.createdAt ? 
-                  <p className="created-at">{new Date(element.updatedAt).toLocaleDateString}</p> : null}
+                  <p className="created-at">{new Date(element.updatedAt).toLocaleDateString()}</p> : null}
                   <div className="buttons">
                       <button onClick={() => {setEditEntry(true)}}>edit post</button>
                       <button onClick={() => {handleDelete(element._id)}}>delete post</button>
                   </div>
-                ) : (
+                  </div>) : (
                   <EditPost 
                   currentPost={element} 
                   setEditEntry={setEditEntry}
@@ -110,10 +110,15 @@ export default function Map() {
                   setRefreshKey((oldKey) => oldKey + 1);
                   getPosts();
                 }}
-                />}
-              </Popup>) : null}
+                />
+              )}
+                  
+                
+                  </Popup>) : null}
+              
           </React.Fragment>
       ))}
+    
       {addEntryLocation ? (
         <>
           <Marker

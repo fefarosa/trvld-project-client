@@ -11,6 +11,7 @@ import Homepage from "../routeComponents/Homepage";
 import Map from "../routeComponents/Map";
 import Login from "../routeComponents/auth/Login";
 import Signup from "../routeComponents/auth/Signup";
+import EditPost from "../components/EditPost";
 
 // import PrivateRoute from "../routeComponents/auth/PrivateRoute";
 import { AuthContextComponent } from "../contexts/authContext";
