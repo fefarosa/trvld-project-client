@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import enter from "../../images/enter.png";
+
 import { AuthContext } from "../../contexts/authContext";
 
 import TextInput from "../../components/TextInput";
@@ -43,6 +45,7 @@ function Login(props) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <img src={enter} alt="login" />
       <h1>login</h1>
       <TextInput
         label="e-mail"

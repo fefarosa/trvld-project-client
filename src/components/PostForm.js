@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-
+import api from "../apis/api";
 import "./PostForm.css";
 
 const PostForm = ({ location, onClose }) => {
@@ -27,6 +27,19 @@ const PostForm = ({ location, onClose }) => {
       [e.target.name]: e.target.value.trim(),
     });
   };
+
+async function handleFileUpload(file) {
+  try{
+    const uploadData = new FormData();
+    uploadData.append('picture', file);
+    const response = await api.post('/upload', uploadData);
+    
+    return response.data.fileUrl
+
+  } catch (err) {
+    console.error(err)
+  }
+}
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +69,7 @@ const PostForm = ({ location, onClose }) => {
       <label htmlFor="image" ref={register}>
         image
       </label>
-      <input name="picture" onChange={handleChange} />
+      <input name="picture" type="file" onChange={handleChange} />
       <label htmlFor="description" ref={register}>
         description
       </label>

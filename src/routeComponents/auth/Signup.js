@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import TextInput from "../../components/TextInput";
 import api from "../../apis/api";
+import './Signup.css';
+import caneta from '../../images/caneta.png';
 
 function Signup(props) {
   const [state, setState] = useState({ name: "", password: "", email: "" });
@@ -37,6 +39,9 @@ function Signup(props) {
     <div>
       <h1>signup</h1>
       <form onSubmit={handleSubmit}>
+      <img src={caneta} alt='caneta' />
+      <div className='center'>
+      <div className='div-input'>
         <TextInput
           label="name"
           name="name"
@@ -75,6 +80,8 @@ function Signup(props) {
           <Link className="link" to="/login">
             already have an account? click here to login.
           </Link>
+        </div>
+        </div>
         </div>
       </form>
     </div>
