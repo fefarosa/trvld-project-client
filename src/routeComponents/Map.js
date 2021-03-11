@@ -111,7 +111,7 @@ export default function Map() {
                     </p>
                     {element.updatedAt !== element.createdAt ? (
                       <p className="created-at">
-                        updates at {new Date(element.updatedAt).toLocaleDateString()}
+                        updated at {new Date(element.updatedAt).toLocaleDateString()}
                       </p>
                     ) : null}
                     <div className="buttons">
