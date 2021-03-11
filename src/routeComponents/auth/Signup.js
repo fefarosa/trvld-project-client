@@ -40,11 +40,10 @@ function Signup(props) {
   return (
     <div>
     <Navbar />
-      <h1>sign up</h1>
       <form onSubmit={handleSubmit}>
-        <img src={caneta} alt="caneta" />
+        <div><img src={caneta} alt="caneta" /></div>
         <div className="center">
-          <div className="div-input">
+          
             <TextInput
               label="name"
               name="name"
@@ -54,7 +53,9 @@ function Signup(props) {
               onChange={handleChange}
               error={error.name}
             />
+            
 
+            
             <TextInput
               label="e-mail"
               name="email"
@@ -64,8 +65,10 @@ function Signup(props) {
               onChange={handleChange}
               error={error.email}
             />
+            
 
-            <TextInput
+            <div className="div-input">
+            <TextInput 
               label="password"
               name="password"
               type="password"
@@ -75,6 +78,8 @@ function Signup(props) {
               hint="password must be at least 8 characters long, must include at least one uppercase letter, one lowercase letter, one number and one special character."
               error={error.password}
             />
+            </div>
+            </div>
 
             {/* {error ? (
               <small className="form-text invalid-feedback">
@@ -83,15 +88,13 @@ function Signup(props) {
             ) : null} */}
 
             <div className="div-button">
-              <button className="btn" type="submit">
+              <div className="btn" ><button type="submit">
                 sign up
-              </button>
+              </button></div>
               <Link className="link" to="/login">
                 already have an account? click here to login.
               </Link>
             </div>
-          </div>
-        </div>
       </form>
     </div>
   );

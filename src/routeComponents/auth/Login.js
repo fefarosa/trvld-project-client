@@ -48,10 +48,12 @@ function Login(props) {
   return (
     <div>
     <Navbar />
-      <h1>log in</h1>
+      
     <form onSubmit={handleSubmit}>
-      <img src={enter} alt="login" />
-      <TextInput
+      <div><img src={enter} alt="login" /></div>
+      <div className='center'>
+        <div className='div-input'>
+      <TextInput 
         label="e-mail"
         name="email"
         type="email"
@@ -59,8 +61,10 @@ function Login(props) {
         value={state.email}
         onChange={handleChange}
       />
+        </div>
 
-      <TextInput
+      <div className='div-input'>
+      <TextInput 
         label="password"
         name="password"
         type="password"
@@ -68,7 +72,9 @@ function Login(props) {
         value={state.password}
         onChange={handleChange}
       />
+      </div>
 
+      </div>
       <div className="div-button">
         <div className="btn">
           <button type="submit">log in</button>
