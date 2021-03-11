@@ -23,6 +23,14 @@ form div {
   border-radius: 10px;
   width: 80px;
   text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(252, 168, 11);
+    color: black;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    border-radius: 20px;
 }
 
 .div-button {
