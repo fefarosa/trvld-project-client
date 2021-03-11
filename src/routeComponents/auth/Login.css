@@ -1,15 +1,8 @@
-
-
-.btn {
-    display: flex;
-    text-align: center;
-}
-
 .label {
     padding: 10px;
 }
 
-input {
+.input {
     height: 40px;
     background-color: rgb(228, 219, 203);
     border-radius: 15px
@@ -24,11 +17,11 @@ img {
 .div-input {
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: 300px;
     align-items: center;
 }
 .center {
     display: flex;
     align-items: center;
     flex-direction: column;
-}
+} 
