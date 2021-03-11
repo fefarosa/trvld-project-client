@@ -24,6 +24,7 @@ function EditPost(props) {
       const response = await api.patch(`/post/${props.currentPost._id}`, {
         ...state,
       });
+      console.log(response)
       props.onClose()
       
     } catch (err) {
@@ -47,12 +48,12 @@ function EditPost(props) {
           description
         </label>
         <textarea name="description" value={state.description} rows={4} onChange={handleChange} />
-        <label htmlFor="visitDate" ref={register}>
+        <label htmlFor="startDate" ref={register}>
           visit date
         </label>
-        <input name="visitDate" value={new Date(state.visitDate).toLocaleDateString()} type="date" onChange={handleChange} />
+        <input name="startDate" value={new Date(state.startDate).toISOString().split("T")[0]} type="date" onChange={handleChange} />
         <p className="mandatory-items">* this field needs to be filled out</p>
-        <button disabled={loading}>
+        <button type="submit" disabled={loading}>
           {loading ? "Loading..." : "submit edited pin 📌"}
         </button>
         <button onClick={() => props.setEditEntry(false)}>cancel</button>
