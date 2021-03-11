@@ -88,32 +88,37 @@ export default function Map() {
                 {!editEntry ? <div className="popup">
                   <h3 className="title">{element.title}</h3>
                   {element.image ? (
-                    <img className="location-image" src={element.image} alt={element.title}/>
+                    <img
+                      className="location-image"
+                      src={element.image}
+                      alt={element.title}/>
                   ) : (
-                    <img className="pin-marker" src={pinBlack} alt="map marker"/>)}
+                    <img
+                      className="pin-marker"
+                      src={pinBlack}
+                      alt="map marker"/>)}
                   <p className="description">{element.description}</p>
-                  <p className="dates">when? {new Date(element.visitDate).toLocaleDateString()}</p>
-                  {element.endDate ? (<p className="dates">until {new Date(element.endDate).toLocaleDateString()}</p>) : null}
-                  <p className="created-at">post created at {new Date(element.createdAt).toLocaleDateString}</p>
-                  {element.updatedAt !== element.createdAt ? 
-                  <p className="created-at">{new Date(element.updatedAt).toLocaleDateString}</p> : null}
+                  {visitDate ? <p className="dates">when? {new Date(element.visitDate).toLocaleDateString()}</p> : null}
+                  <p className="created-at">post created at {new Date(element.createdAt).toLocaleDateString()}</p>
+                  {element.updatedAt !== element.createdAt ? <p className="created-at">{new Date(element.updatedAt).toLocaleDateString()}</p> : null}
                   <div className="buttons">
                       <button onClick={() => {setEditEntry(true)}}>edit post</button>
                       <button onClick={() => {handleDelete(element._id)}}>delete post</button>
                   </div>
-                ) : (
+                 : 
                   <EditPost 
                   currentPost={element} 
                   setEditEntry={setEditEntry}
                   onClose={() => {
                   setEntryLocation(null);
                   setRefreshKey((oldKey) => oldKey + 1);
-                  getPosts();
-                }}
-                />}
-              </Popup>) : null}
-          </React.Fragment>
-      ))}
+                  getPosts();}}
+                   />
+                
+            }
+            )
+              </Popup>}) : null}
+          </React.Fragment>)}
       {addEntryLocation ? (
         <>
           <Marker
