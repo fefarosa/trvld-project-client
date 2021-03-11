@@ -92,8 +92,7 @@ export default function Map() {
                   ) : (
                     <img className="pin-marker" src={pinBlack} alt="map marker"/>)}
                   <p className="description">{element.description}</p>
-                  <p className="dates">when? {new Date(element.visitDate).toLocaleDateString()}</p>
-                  {element.endDate ? (<p className="dates">until {new Date(element.endDate).toLocaleDateString()}</p>) : null}
+                  <p className="dates">when? {new Date(element.startDate).toLocaleDateString()}</p>
                   <p className="created-at">post created at {new Date(element.createdAt).toLocaleDateString()}</p>
                   {element.updatedAt !== element.createdAt ? 
                   <p className="created-at">{new Date(element.updatedAt).toLocaleDateString()}</p> : null}
@@ -106,19 +105,15 @@ export default function Map() {
                   currentPost={element} 
                   setEditEntry={setEditEntry}
                   onClose={() => {
-                  setEntryLocation(null);
-                  setRefreshKey((oldKey) => oldKey + 1);
-                  getPosts();
+                    setEntryLocation(null);
+                    setRefreshKey((oldKey) => oldKey + 1);
+                    getPosts();
                 }}
                 />
               )}
-                  
-                
-                  </Popup>) : null}
-              
+              </Popup>) : null}     
           </React.Fragment>
       ))}
-    
       {addEntryLocation ? (
         <>
           <Marker

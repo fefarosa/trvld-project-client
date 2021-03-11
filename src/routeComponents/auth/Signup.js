@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Signup.css";
 import { Link } from "react-router-dom";
 
@@ -80,12 +80,6 @@ function Signup(props) {
             />
             </div>
             </div>
-
-            {/* {error ? (
-              <small className="form-text invalid-feedback">
-                {error}
-              </small>
-            ) : null} */}
 
             <div className="div-button">
               <div className="btn" ><button type="submit">

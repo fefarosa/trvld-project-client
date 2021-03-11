@@ -47,8 +47,7 @@ async function handleFileUpload(file) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-
+    
     try {
       setLoading(true);
       formData.latitude = location.latitude;
@@ -56,7 +55,6 @@ async function handleFileUpload(file) {
       const upload = await handleFileUpload(formData.image);
       const created = await createPost({...formData, image: upload});
       console.log(created);
-      // handleFileUpload(formData.image);
       onClose();
     } catch (err) {
       console.error(err);
@@ -86,7 +84,7 @@ async function handleFileUpload(file) {
       <input name="startDate" type="date" onChange={handleChange} />
       <p className="mandatory-items">* these fields need to be filled out</p>
       <button type="submit" disabled={loading}>
-        {loading ? "Loading..." : "add pin 📌"}
+        {loading ? "loading..." : "add pin 📌"}
       </button>
     </form>
   );
