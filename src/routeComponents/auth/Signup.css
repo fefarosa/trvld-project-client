@@ -18,7 +18,7 @@ form div {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(228, 219, 203);
+    background-color: rgb(252, 168, 11);
     color: black;
     font-family: 'Nunito', sans-serif;
     font-weight: 900;
@@ -44,7 +44,7 @@ img {
 
 input {
     height: 40px;
-    background-color: rgb(252, 168, 11);
+    background-color: rgb(228, 219, 203);
     border-radius: 15px
 }
 

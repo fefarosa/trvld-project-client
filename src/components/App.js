@@ -26,7 +26,7 @@ function App() {
     <AuthContextComponent>
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <PrivateRoute exact path="/my-map" component={Map} /> {/* Took down PRIVATE route for now, solve with Pedro */}
+        <Route exact path="/my-map" component={Map} /> {/* Took down PRIVATE route for now, solve with Pedro */}
         {/* <PrivateRoute path="/post/delete/:id" component={DeletePost} /> */}
         <Route path="/post/edit/:id" component={EditPost} />
         {/* <PrivateRoute exact path="/my-posts" component={Posts} /> */}

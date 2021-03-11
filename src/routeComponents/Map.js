@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import PostForm from "../components/PostForm";
 import EditPost from "../components/EditPost";
 import api from "../apis/api";
+import pinBlack from "../images/pinBlack.png"
 
 export default function Map() {
   const [posts, setPosts] = useState([]);
@@ -78,7 +79,7 @@ export default function Map() {
               <div onClick={() =>togglePopup({[element._id]: true,})}>
                 <img
                   className="marker"
-                  src="https://www.flaticon.com/svg/vstatic/svg/3754/3754710.svg?token=exp=1615371131~hmac=db6fa8c73f848988c24b2131fe977b67"
+                  src={pinBlack}
                   alt="map marker"
                 />
               </div>
@@ -101,7 +102,7 @@ export default function Map() {
                   ) : (
                     <img
                       className="pin-marker"
-                      src="https://www.flaticon.com/svg/vstatic/svg/3754/3754022.svg?token=exp=1615371133~hmac=c4afcc8f7ed4a15a0076c83783cd76f3"
+                      src={pinBlack}
                       alt="map marker"/>)}
                   <p className="description">{element.description}</p>
                   <p className="dates">when? {new Date(element.startDate).toLocaleDateString()}</p>
