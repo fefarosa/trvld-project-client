@@ -32,8 +32,6 @@ export default function Map() {
     try {
       const response = await axios.get("http://localhost:4000/");
 
-      console.log(response);
-
       setPosts(response.data);
     } catch (err) {
       console.error(err);
@@ -71,7 +69,6 @@ export default function Map() {
         <>
           <React.Fragment key={element._id}>
             <Marker
-              key={element._id}
               latitude={element.latitude}
               longitude={element.longitude}
             >
@@ -106,9 +103,9 @@ export default function Map() {
                   <p className="description">{element.description}</p>
                   <p className="dates">when? {new Date(element.startDate).toLocaleDateString()}</p>
                   {element.endDate ? (<p className="dates">until {new Date(element.endDate).toLocaleDateString()}</p>) : null}
-                  <p className="created-at">post created at {new Date(element.createdAt).toLocaleDateString}</p>
+                  <p className="created-at">post created at {new Date(element.createdAt).toLocaleDateString()}</p>
                   {element.updatedAt !== element.createdAt ? 
-                  <p className="created-at">{new Date(element.updatedAt).toLocaleDateString}</p> : null}
+                  <p className="created-at">{new Date(element.updatedAt).toLocaleDateString()}</p> : null}
                   <div className="buttons">
                       <button onClick={() => {setEditEntry(true)}}>edit post</button>
                       <button onClick={() => {handleDelete(element._id)}}>delete post</button>

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import "./Signup.css";
 import { Link } from "react-router-dom";
+
+import TextInput from "../../components/TextInput";
 import api from "../../apis/api";
-import './Signup.css';
 
 function Signup(props) {
   const [state, setState] = useState({ name: "", password: "", email: "" });
-  const [errors, setErrors] = useState({
+  const [error, setErrors] = useState({
     name: null,
     email: null,
     password: null,
@@ -17,65 +19,65 @@ function Signup(props) {
       [event.currentTarget.name]: event.currentTarget.value,
     });
   }
-  
+
   async function handleSubmit(event) {
     event.preventDefault();
-    
+
     try {
       const response = await api.post("/signup", state);
       setErrors({ name: "", password: "", email: "" });
       props.history.push("/my-map");
-      console.log(response);
     } catch (err) {
       console.error(err.response);
-      setErrors({ ...err.response.data.errors });
+      setErrors({ ...err.response.data.error });
     }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <div><label htmlFor="signupFormName">name</label></div>
-        <input
-          type="text"
+    <div>
+      <h1>signup</h1>
+      <form onSubmit={handleSubmit}>
+        <TextInput
+          label="name"
           name="name"
+          type="text"
           id="signupFormName"
           value={state.name}
-          error={errors.name}
           onChange={handleChange}
+          error={error.name}
         />
-      </div>
 
-      <div>
-        <div><label htmlFor="signupFormEmail">e-mail</label></div>
-        <input
-          type="email"
+        <TextInput
+          label="e-mail"
           name="email"
+          type="email"
           id="signupFormEmail"
           value={state.email}
-          error={errors.email}
           onChange={handleChange}
+          error={error.email}
         />
-      </div>
 
-      <div>
-        <div><label htmlFor="signupFormPassword">password</label></div>
-        <input
-          type="password"
+        <TextInput
+          label="password"
           name="password"
+          type="password"
           id="signupFormPassword"
           value={state.password}
-          error={errors.password}
           onChange={handleChange}
+          hint="password must be at least 8 characters long, must include at least one uppercase letter, one lowercase letter, one number and one special character."
+          error={error.password}
         />
-      </div>
-      <div className='div-button'>
-        <button className='btn' type="submit">sign up</button>
-        <Link className='link' to="/login">
-        already have an account? click here to login.
-        </Link>
-      </div>
-    </form>
+
+        <div className="div-button">
+          <button className="btn" type="submit">
+            sign up
+          </button>
+          <Link className="link" to="/login">
+            already have an account? click here to login.
+          </Link>
+        </div>
+      </form>
+    </div>
   );
 }
 

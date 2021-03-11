@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import "./postForm.css";
+
+import "./PostForm.css";
 
 const PostForm = ({ location, onClose }) => {
   const [loading, setLoading] = useState(false);
@@ -8,8 +9,7 @@ const PostForm = ({ location, onClose }) => {
   // eslint-disable-next-line no-unused-vars
   const { register, handleSubmitHook } = useForm();
   const [formData, setFormData] = useState({});
-  
-
+    
   async function createPost(entry) {
     const response = await fetch(`http://localhost:4000/`, {
       method: "POST",

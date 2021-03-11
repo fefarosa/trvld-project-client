@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import api from "../apis/api";
 
