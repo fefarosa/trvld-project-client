@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../apis/api";
 import './Signup.css';
+import caneta from '../../images/caneta.png';
 
 function Signup(props) {
   const [state, setState] = useState({ name: "", password: "", email: "" });
@@ -34,8 +35,12 @@ function Signup(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <div><label htmlFor="signupFormName">name</label></div>
+    <div>
+      <img src={caneta} alt='caneta' />
+    </div>
+      <div className='center'>
+      <div className='div-input'>
+        <label htmlFor="signupFormName">name</label>
         <input
           type="text"
           name="name"
@@ -46,8 +51,8 @@ function Signup(props) {
         />
       </div>
 
-      <div>
-        <div><label htmlFor="signupFormEmail">e-mail</label></div>
+      <div className='div-input'> 
+        <label htmlFor="signupFormEmail">e-mail</label>
         <input
           type="email"
           name="email"
@@ -58,8 +63,8 @@ function Signup(props) {
         />
       </div>
 
-      <div>
-        <div><label htmlFor="signupFormPassword">password</label></div>
+      <div className='div-input'>
+        <label htmlFor="signupFormPassword">password</label>
         <input
           type="password"
           name="password"
@@ -69,8 +74,9 @@ function Signup(props) {
           onChange={handleChange}
         />
       </div>
+      </div>
       <div className='div-button'>
-        <button className='btn' type="submit">sign up</button>
+        <div className='btn'><button type="submit">sign up</button></div>
         <Link className='link' to="/login">
         already have an account? click here to login.
         </Link>

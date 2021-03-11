@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import api from "../../apis/api";
 import "./Login.css";
+import enter from '../../images/enter.png';
 
 import { AuthContext } from "../../contexts/authContext";
 
@@ -43,9 +44,11 @@ function Login(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Login</h1>
-
       <div>
+      <img src={enter} alt='login' />
+    </div>
+    <div className='center'>
+      <div className='div-input'>
         <label className="label" htmlFor="signupFormEmail">
           e-mail
         </label>
@@ -59,7 +62,7 @@ function Login(props) {
         />
       </div>
 
-      <div>
+      <div className='div-input'>
         <label className="label" htmlFor="signupFormPassword">
           password
         </label>
@@ -72,7 +75,7 @@ function Login(props) {
           onChange={handleChange}
         />
       </div>
-
+      </div>
       <div className="div-button">
         <div className="btn">
           <button type="submit">Login!</button>
