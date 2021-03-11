@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Signup.css";
 import { Link } from "react-router-dom";
 
@@ -75,12 +75,6 @@ function Signup(props) {
               hint="password must be at least 8 characters long, must include at least one uppercase letter, one lowercase letter, one number and one special character."
               error={error.password}
             />
-
-            {/* {error ? (
-              <small className="form-text invalid-feedback">
-                {error}
-              </small>
-            ) : null} */}
 
             <div className="div-button">
               <button className="btn" type="submit">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import api from "../apis/api";
-import "./PostForm.css";
+import "./postForm.css";
 
 const PostForm = ({ location, onClose }) => {
   const [loading, setLoading] = useState(false);
@@ -22,11 +22,15 @@ const PostForm = ({ location, onClose }) => {
   }
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value.trim(),
-    });
-  };
+    if (e.target.files) {
+      setFormData({ ...formData, [e.target.name]: e.target.files[0] });
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value.trim(),
+      });
+    }
+  };  
 
 async function handleFileUpload(file) {
   try{
@@ -41,17 +45,16 @@ async function handleFileUpload(file) {
   }
 }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-
+    
     try {
       setLoading(true);
       formData.latitude = location.latitude;
       formData.longitude = location.longitude;
-      const created = createPost(formData);
+      const upload = await handleFileUpload(formData.image);
+      const created = await createPost({...formData, image: upload});
       console.log(created);
-      // handleFileUpload(formData.image);
       onClose();
     } catch (err) {
       console.error(err);
@@ -75,13 +78,13 @@ async function handleFileUpload(file) {
         description
       </label>
       <textarea name="description" rows={4} onChange={handleChange} />
-      <label htmlFor="visitDate" ref={register}>
+      <label htmlFor="startDate" ref={register}>
         visit date
       </label>
-      <input name="visitDate" type="date" onChange={handleChange} />
+      <input name="startDate" type="date" onChange={handleChange} />
       <p className="mandatory-items">* these fields need to be filled out</p>
-      <button disabled={loading}>
-        {loading ? "Loading..." : "add pin 📌"}
+      <button type="submit" disabled={loading}>
+        {loading ? "loading..." : "add pin 📌"}
       </button>
     </form>
   );

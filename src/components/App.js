@@ -11,8 +11,9 @@ import Homepage from "../routeComponents/Homepage";
 import Map from "../routeComponents/Map";
 import Login from "../routeComponents/auth/Login";
 import Signup from "../routeComponents/auth/Signup";
+import EditPost from "../components/EditPost";
 
-// import PrivateRoute from "../routeComponents/auth/PrivateRoute";
+import PrivateRoute from "../routeComponents/auth/PrivateRoute";
 import { AuthContextComponent } from "../contexts/authContext";
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
     <AuthContextComponent>
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route exact path="/my-map" component={Map} />
+        <PrivateRoute exact path="/my-map" component={Map} /> 
+        <Route path="/post/edit/:id" component={EditPost} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
       </Switch>
