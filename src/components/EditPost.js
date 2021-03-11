@@ -42,7 +42,7 @@ function EditPost(props) {
         <label htmlFor="image" ref={register}>
           image
         </label>
-        <input name="picture" onChange={handleChange} />
+        <input name="picture" type="file" onChange={handleChange} />
         <label htmlFor="description" ref={register}>
           description
         </label>
