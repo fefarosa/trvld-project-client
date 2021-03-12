@@ -1,27 +1,44 @@
-.label {
-    padding: 10px;
+.img-center {
+  height: 70px;
+  width: auto;
 }
 
-.input {
-    height: 40px;
-    background-color: rgb(228, 219, 203);
-    border-radius: 15px
+.form-group input {
+  height: 40px;
+  border-radius: 15px;
 }
 
-img {
-    width: 50px;
-    height: 50px;
-    text-align: center
+.form-group {
+  margin: 0px;
 }
 
-.div-input {
+.go-to-signup-login a {
+  text-decoration: underline;
+  text-align: center;
+  color: black;
+}
+
+button {
+  border: none;
+  background-color: rgb(252, 168, 11);
+  color: black;
+  border-radius: 10px;
+  width: 80px;
+  text-align: center;
+}
+
+.div-input-login {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.center-login {
+    height: 200px;
+    padding-bottom: 0;
     display: flex;
     flex-direction: column;
-    width: 300px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     align-items: center;
-}
-.center {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-} 
+    align-content: center;
+  }

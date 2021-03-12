@@ -47,41 +47,47 @@ function Login(props) {
 
   return (
     <div>
-    <Navbar />
-      
-    <form onSubmit={handleSubmit}>
-      <div><img src={enter} alt="login" /></div>
-      <div className='center'>
-        <div className='div-input'>
-      <TextInput 
-        label="e-mail"
-        name="email"
-        type="email"
-        id="loginFormEmail"
-        value={state.email}
-        onChange={handleChange}
-      />
+      <Navbar />
+      <form onSubmit={handleSubmit}>
+        <div className="title-image">
+          <img className="img-center" src={enter} alt="login" />
         </div>
+        <div className="center-login">
+          <div className="div-input-login">
+            <TextInput
+              label="e-mail"
+              name="email"
+              type="email"
+              id="loginFormEmail"
+              value={state.email}
+              onChange={handleChange}
+            />
+          </div>
 
-      <div className='div-input'>
-      <TextInput 
-        label="password"
-        name="password"
-        type="password"
-        id="loginFormPassword"
-        value={state.password}
-        onChange={handleChange}
-      />
-      </div>
-
-      </div>
-      <div className="div-button">
-        <div className="btn">
-          <button type="submit">log in</button>
+          <div className="div-input-login">
+            <TextInput
+              label="password"
+              name="password"
+              type="password"
+              id="loginFormPassword"
+              value={state.password}
+              onChange={handleChange}
+            />
+          </div>
         </div>
-        <Link to="/signup">don't have an account? click here to signup.</Link>
-      </div>
-    </form>
+        <div className="div-button">
+          <div className="btn">
+            <button type="submit">log in</button>
+          </div>
+          <div className="go-to-signup-login">
+          <Link to="/signup">
+          don't have an account?
+          <br/>
+          click here to sign up.
+          </Link>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }

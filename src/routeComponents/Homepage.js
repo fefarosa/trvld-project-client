@@ -2,16 +2,12 @@ import React from "react";
 import "./Homepage.css";
 
 import { Link } from "react-router-dom";
-import Navbar from '../components/Navbar';
 import github from '../images/github.png';
 import pin from '../images/pin.png';
-
-
 
 function Homepage() {
   return (
     <div>
-      <Navbar />
       <div className="home-title">
       <img src={pin} alt="map marker" />
         <h1>trip(pin)</h1>

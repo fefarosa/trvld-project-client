@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Signup.css";
 import { Link } from "react-router-dom";
 
-import "./Signup.css";
 import TextInput from "../../components/TextInput";
 import api from "../../apis/api";
 import caneta from "../../images/caneta.png";
@@ -33,7 +32,7 @@ function Signup(props) {
       console.log(response)
     } catch (err) {
       console.error(err.response);
-      setErrors({ ...error, ...err.response.data.errors });
+      setErrors({ ...error, ...err.response.data.error });
     }
   }
 
@@ -41,9 +40,10 @@ function Signup(props) {
     <div>
     <Navbar />
       <form onSubmit={handleSubmit}>
-        <div><img src={caneta} alt="caneta" /></div>
+        <div className="title-image">
+        <img className="img-center" src={caneta} alt="caneta" />
+        </div>
         <div className="center">
-          
             <TextInput
               label="name"
               name="name"
@@ -53,8 +53,6 @@ function Signup(props) {
               onChange={handleChange}
               error={error.name}
             />
-            
-
             
             <TextInput
               label="e-mail"
@@ -66,7 +64,6 @@ function Signup(props) {
               error={error.email}
             />
             
-
             <div className="div-input">
             <TextInput 
               label="password"
@@ -85,9 +82,13 @@ function Signup(props) {
               <div className="btn" ><button type="submit">
                 sign up
               </button></div>
+              <div className="go-to-signup-login">
               <Link className="link" to="/login">
-                already have an account? click here to login.
+                already have an account? 
+                <br/>
+                click here to login.
               </Link>
+              </div>
             </div>
       </form>
     </div>

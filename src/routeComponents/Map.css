@@ -1,43 +1,95 @@
 .marker {
-    height: 25px;
-    width: 25px;
-    transform: translate(-50%, -100%);
-    z-index: -1;
-  }
-  
-.title {
-    color: #C4656C;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-  }
+  height: 25px;
+  width: auto;
+  transform: translate(-50%, -100%);
+  z-index: -99;
+}
 
-.location-image,
+.title {
+  margin-top: 15px;
+  color: rgb(208, 136, 3);
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.location-image {
+  min-width: 40vw;
+  max-width: 55vw;
+  max-height: 50vh;
+}
+
 .pin-marker {
-    min-height: 20vh;
-    min-width: auto;
-    max-width: 30vw;
-    max-height: 30vh;
-    z-index: 0;
+  height: 10vh;
+  width: auto;
+  margin: 10%;
+}
+
+.mapboxgl-popup-close-button {
+  padding: 0;
+  width: 25px;
 }
 
 .popup {
-    max-width: 40vw;
-    max-height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
+  min-width: 50vw;
+  max-width: 60vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
 }
 
 .dates {
-    margin: 0;
+  margin: 2px;
+  font-size: 14px;
 }
 
-.buttons {
-    font-size: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.buttons-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 0;
+}
+
+.buttons-details button {
+  width: 70px;
+  height: 26px;
+  font-size: 12px;
+  line-height: 13px;
+  margin: 5px;
+}
+
+.created-at-post {
+  font-size: 10px;
+  margin-bottom: 0;
+  color: gray;
+  margin-left: 0px;
+  margin-right: 10px;
+  text-align: start;
+}
+
+.created-at-update {
+  font-size: 10px;
+  margin-bottom: 0;
+  color: gray;
+  margin-right: 0px;
+  margin-left: 10px;
+  text-align: end;
+}
+
+.created-at-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 25px;
+}
+
+.description {
+  font-size: 16px;
+  text-align: center;
 }

@@ -9,6 +9,7 @@ import PostForm from "../components/PostForm";
 import EditPost from "../components/EditPost";
 import api from "../apis/api";
 import pinBlack from "../images/pinBlack.png"
+import pin from '../images/pin.png';
 
 export default function Map() {
   const [posts, setPosts] = useState([]);
@@ -90,15 +91,17 @@ export default function Map() {
                   {element.image ? (
                     <img className="location-image" src={element.image} alt={element.title}/>
                   ) : (
-                    <img className="pin-marker" src={pinBlack} alt="map marker"/>)}
+                    <img className="pin-marker" src={pin} alt="map marker"/>)}
                   <p className="description">{element.description}</p>
-                  <p className="dates">when? {new Date(element.startDate).toLocaleDateString()}</p>
-                  <p className="created-at">post created at {new Date(element.createdAt).toLocaleDateString()}</p>
+                  {element.startDate ? <p className="dates">when? {new Date(element.startDate).toLocaleDateString()}</p> : null}
+                  <div className="created-at-div">
+                  <p className="created-at-post">post created at<br/>{new Date(element.createdAt).toLocaleDateString()}</p>
                   {element.updatedAt !== element.createdAt ? 
-                  <p className="created-at">{new Date(element.updatedAt).toLocaleDateString()}</p> : null}
-                  <div className="buttons">
-                      <button onClick={() => {setEditEntry(true)}}>edit post</button>
-                      <button onClick={() => {handleDelete(element._id)}}>delete post</button>
+                  <p className="created-at-update">updated at<br/>{new Date(element.updatedAt).toLocaleDateString()}</p> : null}
+                  </div>
+                  <div className="buttons-details">
+                      <button onClick={() => {setEditEntry(true)}}>edit<br/>post</button>
+                      <button onClick={() => {handleDelete(element._id)}}>delete<br/>post</button>
                   </div>
                   </div>) : (
                   <EditPost 
@@ -121,9 +124,7 @@ export default function Map() {
             longitude={addEntryLocation.longitude}
           >
             <img
-              className="marker"
-              src="https://www.flaticon.com/svg/vstatic/svg/3754/3754710.svg?token=exp=1615371131~hmac=db6fa8c73f848988c24b2131fe977b67"
-              alt="map marker"
+              className="marker" src={pinBlack} alt="map marker"
             />
           </Marker>
           <Popup
