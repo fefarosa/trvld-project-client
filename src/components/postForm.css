@@ -1,8 +1,50 @@
 .post-form {
-    margin: 0.5rem;
-    display: block;
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+}
+
+.post-form input {
+  width: 55vw;
+}
+
+.post-form label {
+  font-family: "Nunito", sans-serif;
+  font-weight: 900;
+}
+
+.buttons-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  padding: 0;
+}
+
+.buttons-details button {
+  width: 90px;
+  height: 26px;
+  font-size: 12px;
+  line-height: 13px;
+  margin: 5px;
 }
 
 .mandatory-items {
-    font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 25px;
+  font-size: 10px;
+  color: gray;
+  margin-left: 0px;
+  margin-right: 10px;
+  text-align: start;
+}
+
+.post-form label {
+  margin-bottom: 2px;
+  margin-top: 5px;
 }

@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;900&display=swap");
 body {
   background-color: rgb(159, 206, 211);
   margin: 0;
@@ -19,7 +18,8 @@ body {
 
 .home-title {
   height: 15vh;
-  margin: 10%;
+  margin-top: 25%;
+  margin-bottom: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,10 +31,13 @@ body {
 .home-title h1 {
   font-family: "Nunito", sans-serif;
   font-weight: 900;
+  margin-top: 5%;
+  margin-bottom: 0;
 }
 
 .home-title img {
-  height: 20vh;
+  height: 90px;
+  width: auto;
 }
 
 .info-footer {
@@ -52,6 +55,13 @@ body {
   margin-bottom: 25px;
 }
 
+.btn-link {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px;
+}
+
 .github-box {
   display: flex;
   flex-direction: column;
@@ -62,13 +72,6 @@ body {
 .github-box a {
   text-decoration: none;
   color: black;
-}
-
-.btn-link {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 25px;
 }
 
 .btn-link a {

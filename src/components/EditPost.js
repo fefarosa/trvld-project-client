@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import "./postForm.css";
 
 import api from "../apis/api";
 
@@ -73,10 +74,12 @@ function EditPost(props) {
         .toISOString().split("T")[0]
         } type="date" onChange={handleChange} />
         <p className="mandatory-items">* this field needs to be filled out</p>
+        <div className="buttons-details">
         <button type="submit" disabled={loading} onClick={() => props.onClose()}>
-          {loading ? "Loading..." : "submit edited pin 📌"}
+          {loading ? "Loading..." : "submit edited pin"}
         </button>
         <button onClick={() => props.setEditEntry(false)}>cancel</button>
+        </div>
       </form>
     </div>
   );

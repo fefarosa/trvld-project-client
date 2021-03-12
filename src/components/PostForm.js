@@ -9,7 +9,7 @@ const PostForm = ({ location, onClose }) => {
   // eslint-disable-next-line no-unused-vars
   const { register, handleSubmitHook } = useForm();
   const [formData, setFormData] = useState({});
-    
+
   async function createPost(entry) {
     const response = await fetch(`http://localhost:4000/`, {
       method: "POST",
@@ -30,30 +30,29 @@ const PostForm = ({ location, onClose }) => {
         [e.target.name]: e.target.value.trim(),
       });
     }
-  };  
+  };
 
-async function handleFileUpload(file) {
-  try{
-    const uploadData = new FormData();
-    uploadData.append('picture', file);
-    const response = await api.post('/upload', uploadData);
-    
-    return response.data.fileUrl
+  async function handleFileUpload(file) {
+    try {
+      const uploadData = new FormData();
+      uploadData.append("picture", file);
+      const response = await api.post("/upload", uploadData);
 
-  } catch (err) {
-    console.error(err)
+      return response.data.fileUrl;
+    } catch (err) {
+      console.error(err);
+    }
   }
-}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       setLoading(true);
       formData.latitude = location.latitude;
       formData.longitude = location.longitude;
       const upload = await handleFileUpload(formData.image);
-      const created = await createPost({...formData, image: upload});
+      const created = await createPost({ ...formData, image: upload });
       console.log(created);
       onClose();
     } catch (err) {
@@ -73,7 +72,11 @@ async function handleFileUpload(file) {
       <label htmlFor="image" ref={register}>
         image
       </label>
-      <input name="image" type="file" onChange={handleChange} />
+      <input
+        name="image"
+        type="file"
+        onChange={handleChange}
+      />
       <label htmlFor="description" ref={register}>
         description
       </label>
@@ -82,10 +85,12 @@ async function handleFileUpload(file) {
         visit date
       </label>
       <input name="startDate" type="date" onChange={handleChange} />
-      <p className="mandatory-items">* these fields need to be filled out</p>
+      <p className="mandatory-items">* this field needs to be filled out</p>
+      <div className="buttons-details">
       <button type="submit" disabled={loading}>
-        {loading ? "loading..." : "add pin 📌"}
+        {loading ? "loading..." : "add pin"}
       </button>
+      </div>
     </form>
   );
 };
