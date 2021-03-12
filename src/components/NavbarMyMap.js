@@ -11,11 +11,11 @@ function NavbarMyMap() {
         alt="pin-icon"
       />
       <p>trip(pin)</p>
-      {/* <div className="logout-btn">
+      <div className="logout-btn">
         <button>
-         <Link to="/logout">log out</Link>
+         <a href="https://trippin-ih.netlify.app/">log out</a>
         </button>
-      </div> */}
+      </div>
     </nav>
   );
 }

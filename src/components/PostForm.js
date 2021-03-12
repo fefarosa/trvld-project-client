@@ -39,6 +39,7 @@ const PostForm = ({ location, onClose }) => {
       const response = await api.post("/upload", uploadData);
 
       return response.data.fileUrl;
+      
     } catch (err) {
       console.error(err);
     }
@@ -82,10 +83,10 @@ const PostForm = ({ location, onClose }) => {
       </label>
       <textarea name="description" rows={4} onChange={handleChange} />
       <label htmlFor="startDate" ref={register}>
-        visit date
+        visit date*
       </label>
-      <input name="startDate" type="date" onChange={handleChange} />
-      <p className="mandatory-items">* this field needs to be filled out</p>
+      <input name="startDate" type="date" required onChange={handleChange} />
+      <p className="mandatory-items">* these fields need to be filled out</p>
       <div className="buttons-details">
       <button type="submit" disabled={loading}>
         {loading ? "loading..." : "add pin"}

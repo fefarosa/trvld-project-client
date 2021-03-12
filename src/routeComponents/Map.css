@@ -31,7 +31,7 @@
 }
 
 .popup {
-  min-width: 50vw;
+  min-width: 55vw;
   max-width: 60vw;
   max-height: 80vh;
   display: flex;

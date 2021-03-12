@@ -33,7 +33,6 @@ function EditPost(props) {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
 
     try {
       const response = await api.patch(`/post/${props.currentPost._id}`, {
@@ -43,7 +42,9 @@ function EditPost(props) {
       setLoading(true);
       const upload = await handleFileUpload(formData.image);
       const created = await setFormData({...formData, image: upload});
+      
       console.log(created);  
+      props.onClose()
     } catch (err) {
       console.error(err);
       setError(error.message);
@@ -68,15 +69,15 @@ function EditPost(props) {
         </label>
         <textarea name="description" value={state.description} rows={4} onChange={handleChange} />
         <label htmlFor="startDate" ref={register}>
-          visit date
+          visit date*
         </label>
         <input name="startDate" value={new Date(state.startDate)
         .toISOString().split("T")[0]
-        } type="date" onChange={handleChange} />
+        } type="date" onChange={handleChange} required />
         <p className="mandatory-items">* this field needs to be filled out</p>
         <div className="buttons-details">
-        <button type="submit" disabled={loading} onClick={() => props.onClose()}>
-          {loading ? "Loading..." : "submit edited pin"}
+        <button type="submit" disabled={loading} onClick={() => handleSubmit()}>
+          {loading ? "loading..." : "submit edited pin"}
         </button>
         <button onClick={() => props.setEditEntry(false)}>cancel</button>
         </div>

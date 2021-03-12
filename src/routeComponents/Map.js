@@ -108,9 +108,10 @@ export default function Map() {
                   currentPost={element} 
                   setEditEntry={setEditEntry}
                   onClose={() => {
-                    setEntryLocation(null);
-                    setRefreshKey((oldKey) => oldKey + 1);
-                    getPosts();
+
+                //   //   setEntryLocation(null);
+                // setRefreshKey((oldKey) => oldKey + 1);
+                     getPosts();
                 }}
                 />
               )}
