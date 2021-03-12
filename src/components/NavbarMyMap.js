@@ -10,7 +10,7 @@ function NavbarMyMap() {
         className="navbar-brand d-inline-block align-top flex-wrap"
         alt="pin-icon"
       />
-      <p>trip(pin)</p>
+      <p className="nav-p">trip(pin)</p>
       <div className="logout-btn">
         <button>
          <a href="https://trippin-ih.netlify.app/">log out</a>
