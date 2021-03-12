@@ -12,9 +12,9 @@
 - Use Express for your API backend that your React app will communicate with.
 - Use Mongoose for models and database communication.
 - Have 3 models or more.
-Having one for users is a no-brainer.
-The other two should represent the main functionality of your app.
-Don’t force it if having a 3rd model doesn’t make sense.
+    - Having one for users is a no-brainer.
+    - The other two should represent the main functionality of your app.
+    - Don’t force it if having a 3rd model doesn’t make sense.
 - Have validation on its models with feedback for users if their submission is invalid.
 - Include sign up, log in & log out functionality with encrypted passwords (or social logins) and authorization (logged in users can do extra things).
 - Have two repos on GitHub. One for your React application and the other for your Express API backend.
