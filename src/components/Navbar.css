@@ -3,9 +3,11 @@
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: space-between;
-	align-items: flex-start;
+	align-items: center;
+	align-content: center;
     background-color: rgb(159, 206, 211);
     z-index: 10;
+    padding: 8px 2px;
 }
 
 .navbar img {
@@ -15,5 +17,13 @@
 }
 
 p {
-    margin: 5px 5px;
+    margin-left: 45px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.logout-btn a {
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
 }

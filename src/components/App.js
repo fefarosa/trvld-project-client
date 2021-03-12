@@ -12,7 +12,7 @@ import Map from "../routeComponents/Map";
 import Login from "../routeComponents/auth/Login";
 import Signup from "../routeComponents/auth/Signup";
 
-import PrivateRoute from "../routeComponents/auth/PrivateRoute";
+// import PrivateRoute from "../routeComponents/auth/PrivateRoute";
 import { AuthContextComponent } from "../contexts/authContext";
 
 function App() {
@@ -21,8 +21,8 @@ function App() {
     <AuthContextComponent>
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <PrivateRoute exact path="/my-map" component={Map} /> 
-        <Route exact path="/logout" component={Homepage} />
+        <Route exact path="/my-map" component={Map} /> 
+        {/* <Route exact path="/logout" component={Homepage} /> */}
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
       </Switch>

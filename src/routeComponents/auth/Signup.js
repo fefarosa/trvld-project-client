@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Signup.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import TextInput from "../../components/TextInput";
 import api from "../../apis/api";
@@ -15,6 +15,8 @@ function Signup(props) {
     password: null,
   });
 
+  const history = useHistory();
+
   function handleChange(event) {
     setState({
       ...state,
@@ -28,7 +30,7 @@ function Signup(props) {
     try {
       const response = await api.post("/signup", state);
       setErrors({ name: "", password: "", email: "" });
-      props.history.push("/my-map");
+      history.push("/my-map");
       console.log(response)
     } catch (err) {
       console.error(err.response);
