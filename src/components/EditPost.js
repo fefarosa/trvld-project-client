@@ -15,8 +15,15 @@ function EditPost(props) {
 
   const history = useHistory();
 
-  function handleChange(event) {
-    setState({...state, [event.target.name]: event.target.value});
+  function handleChange(e) {
+    if (e.target.files) {
+      setState({ ...state, [e.target.name]: e.target.files[0] });
+    } else {
+      setState({
+        ...state,
+        [e.target.name]: e.target.value.trim(),
+      });
+    }
   }
 
   async function handleFileUpload(file) {
@@ -33,18 +40,19 @@ function EditPost(props) {
   }
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
     try {
-      const response = await api.patch(`/post/${props.currentPost._id}`, {
-        ...state,
+      const upload = await handleFileUpload(state.image);
+      const response = await api.patch(`/post/${props.currentPost._id}`, 
+      {
+        ...state, image: upload
       });
       console.log(response);
-      setLoading(true);
-      const upload = await handleFileUpload(formData.image);
-      const created = await setFormData({...formData, image: upload});
-      
-      console.log(created);  
-      props.onClose()
+      setLoading(false);
+      window.location.reload();
+      // props.onClose()
     } catch (err) {
       console.error(err);
       setError(error.message);
@@ -63,7 +71,7 @@ function EditPost(props) {
         <label htmlFor="image" ref={register}>
           image
         </label>
-        <input name="picture" type="file" onChange={handleChange} />
+        <input name="image" type="file" onChange={handleChange} />
         <label htmlFor="description" ref={register}>
           description
         </label>
@@ -76,7 +84,7 @@ function EditPost(props) {
         } type="date" onChange={handleChange} required />
         <p className="mandatory-items">* this field needs to be filled out</p>
         <div className="buttons-details">
-        <button type="submit" disabled={loading} onClick={() => handleSubmit()}>
+        <button type="submit" disabled={loading}>
           {loading ? "loading..." : "submit edited pin"}
         </button>
         <button onClick={() => props.setEditEntry(false)}>cancel</button>

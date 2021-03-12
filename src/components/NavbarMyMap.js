@@ -1,8 +1,19 @@
 import "./Navbar.css";
-import { Link } from "react";
+import { useHistory } from "react-router-dom";
+import { useContext } from "react";
 import pin from "../images/pin.png";
+import { AuthContext } from "../contexts/authContext";
 
 function NavbarMyMap() {
+  const authContext = useContext(AuthContext);
+  const history = useHistory();
+
+  const handleClick = () => {
+    localStorage.removeItem("loggedInUser");
+    authContext.setLoggedInUser({});
+    history.push("/")
+  };
+
   return (
     <nav className="navbar">
       <img
@@ -12,9 +23,7 @@ function NavbarMyMap() {
       />
       <p className="nav-p">trip(pin)</p>
       <div className="logout-btn">
-        <button>
-         <a href="https://trippin-ih.netlify.app/">log out</a>
-        </button>
+        <button onClick={handleClick}>log out</button>
       </div>
     </nav>
   );

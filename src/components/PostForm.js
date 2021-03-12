@@ -11,7 +11,7 @@ const PostForm = ({ location, onClose }) => {
   const [formData, setFormData] = useState({});
 
   async function createPost(entry) {
-    const response = await fetch(`http://localhost:4000/`, {
+    const response = await fetch('https://trippin-ironhack.herokuapp.com', {
       method: "POST",
       headers: {
         "content-type": "application/json",

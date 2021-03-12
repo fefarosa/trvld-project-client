@@ -8,8 +8,8 @@ import NavbarMyMap from "../components/NavbarMyMap";
 import PostForm from "../components/PostForm";
 import EditPost from "../components/EditPost";
 import api from "../apis/api";
-import pinBlack from "../images/pinBlack.png"
-import pin from '../images/pin.png';
+import pinBlack from "../images/pinBlack.png";
+import pin from "../images/pin.png";
 
 export default function Map() {
   const [posts, setPosts] = useState([]);
@@ -32,7 +32,7 @@ export default function Map() {
 
   const getPosts = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/");
+      const response = await axios.get('https://trippin-ironhack.herokuapp.com');
 
       setPosts(response.data);
     } catch (err) {
@@ -68,55 +68,88 @@ export default function Map() {
     >
       <NavbarMyMap />
       {posts.map((element) => (
-          <React.Fragment key={element._id}>
-            <Marker latitude={element.latitude} longitude={element.longitude}>
-              <div onClick={() => togglePopup({ [element._id]: true })}>
-                <img
-                  className="marker"
-                  src={pinBlack}
-                  alt="map marker"
-                />
-              </div>
-            </Marker>
-            {showPopup[element._id] ? (
-              <Popup
-                latitude={element.latitude}
-                longitude={element.longitude}
-                closeButton={true}
-                closeOnClick={false}
-                onClose={() => togglePopup(false)}
-                anchor="top">
-                {!editEntry ? (<div className="popup">
+        <React.Fragment key={element._id}>
+          <Marker latitude={element.latitude} longitude={element.longitude}>
+            <div onClick={() => togglePopup({ [element._id]: true })}>
+              <img className="marker" src={pinBlack} alt="map marker" />
+            </div>
+          </Marker>
+          {showPopup[element._id] ? (
+            <Popup
+              latitude={element.latitude}
+              longitude={element.longitude}
+              closeButton={true}
+              closeOnClick={false}
+              onClose={() => togglePopup(false)}
+              anchor="top"
+            >
+              {!editEntry ? (
+                <div className="popup">
                   <h3 className="title">{element.title}</h3>
                   {element.image ? (
-                    <img className="location-image" src={element.image} alt={element.title}/>
+                    <img
+                      className="location-image"
+                      src={element.image}
+                      alt={element.title}
+                    />
                   ) : (
-                    <img className="pin-marker" src={pin} alt="map marker"/>)}
+                    <img className="pin-marker" src={pin} alt="map marker" />
+                  )}
                   <p className="description">{element.description}</p>
-                  {element.startDate ? <p className="dates">when? {new Date(element.startDate).toLocaleDateString()}</p> : null}
+                  {element.startDate ? (
+                    <p className="dates">
+                      when? {new Date(element.startDate).toLocaleDateString()}
+                    </p>
+                  ) : null}
                   <div className="created-at-div">
-                  <p className="created-at-post">post created at<br/>{new Date(element.createdAt).toLocaleDateString()}</p>
-                  {element.updatedAt !== element.createdAt ? 
-                  <p className="created-at-update">updated at<br/>{new Date(element.updatedAt).toLocaleDateString()}</p> : null}
+                    <p className="created-at-post">
+                      post created at
+                      <br />
+                      {new Date(element.createdAt).toLocaleDateString()}
+                    </p>
+                    {element.updatedAt !== element.createdAt ? (
+                      <p className="created-at-update">
+                        updated at
+                        <br />
+                        {new Date(element.updatedAt).toLocaleDateString()}
+                      </p>
+                    ) : null}
                   </div>
                   <div className="buttons-details">
-                      <button onClick={() => {setEditEntry(true)}}>edit<br/>post</button>
-                      <button onClick={() => {handleDelete(element._id)}}>delete<br/>post</button>
+                    <button
+                      onClick={() => {
+                        setEditEntry(true);
+                      }}
+                    >
+                      edit
+                      <br />
+                      post
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleDelete(element._id);
+                      }}
+                    >
+                      delete
+                      <br />
+                      post
+                    </button>
                   </div>
-                  </div>) : (
-                  <EditPost 
-                  currentPost={element} 
+                </div>
+              ) : (
+                <EditPost
+                  currentPost={element}
                   setEditEntry={setEditEntry}
                   onClose={() => {
-
-                //   //   setEntryLocation(null);
-                // setRefreshKey((oldKey) => oldKey + 1);
-                     getPosts();
-                }}
+                    // setEntryLocation(null);
+                    setRefreshKey((oldKey) => oldKey + 1);
+                    getPosts();
+                  }}
                 />
               )}
-              </Popup>) : null}     
-          </React.Fragment>
+            </Popup>
+          ) : null}
+        </React.Fragment>
       ))}
       {addEntryLocation ? (
         <>
@@ -124,9 +157,7 @@ export default function Map() {
             latitude={addEntryLocation.latitude}
             longitude={addEntryLocation.longitude}
           >
-            <img
-              className="marker" src={pinBlack} alt="map marker"
-            />
+            <img className="marker" src={pinBlack} alt="map marker" />
           </Marker>
           <Popup
             latitude={addEntryLocation.latitude}
