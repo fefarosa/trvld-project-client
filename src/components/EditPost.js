@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import "./EditPost.css";
 
 import api from "../apis/api";
 
@@ -37,19 +38,19 @@ function EditPost(props) {
       <form className="post-form" onSubmit={handleSubmit}>
         {error ? <h3 className="error">{error}</h3> : null}
         <label htmlFor="title" ref={register}>
-          title*
+          title*:
         </label>
         <input name="title" value={state.title} required onChange={handleChange} />
         <label htmlFor="image" ref={register}>
-          image
+          image:
         </label>
         <input name="picture" type="file" onChange={handleChange} />
         <label htmlFor="description" ref={register}>
-          description
+          description:
         </label>
         <textarea name="description" value={state.description} rows={4} onChange={handleChange} />
         <label htmlFor="startDate" ref={register}>
-          visit date
+          visit date 
         </label>
         <input name="startDate" value={new Date(state.startDate).toISOString().split("T")[0]} type="date" onChange={handleChange} />
         <p className="mandatory-items">* this field needs to be filled out</p>

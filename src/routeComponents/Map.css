@@ -22,7 +22,7 @@
 }
 
 .popup {
-    max-width: 40vw;
+    max-width: 60vw;
     max-height: auto;
     display: flex;
     flex-direction: column;

@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;900&display=swap');
+
+
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.post-form input {
+    background-color: rgb(228, 219, 203);
+    max-width: 60vw;
+}
+
+.post-form label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(252, 168, 11);
+    color: black;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    border-radius: 20px;
+}
