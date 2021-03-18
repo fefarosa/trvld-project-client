@@ -2,7 +2,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Map.css";
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import axios from "axios";
+import 'mapbox-gl/dist/mapbox-gl.css';
+import mapboxgl from 'mapbox-gl';
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 import NavbarMyMap from "../components/NavbarMyMap";
 import PostForm from "../components/PostForm";
