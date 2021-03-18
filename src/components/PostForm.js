@@ -11,17 +11,12 @@ const PostForm = ({ location, onClose }) => {
   const [formData, setFormData] = useState({});
 
   async function createPost(entry) {
-    const response = await fetch(
-      "https://git.heroku.com/trippin-ironhack.git",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(entry),
-      }
-    );
-    return response.json();
+    try {
+      const response = await api.post("/", entry)
+      return response.data;
+    } catch(err) {
+      console.error(err)
+    }   
   }
 
   const handleChange = (e) => {
