@@ -1,11 +1,10 @@
+/* eslint-disable import/first */
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Map.css";
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
-// eslint-disable-next-line import/no-webpack-loader-syntax
-mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 import NavbarMyMap from "../components/NavbarMyMap";
 import PostForm from "../components/PostForm";
@@ -13,6 +12,9 @@ import EditPost from "../components/EditPost";
 import api from "../apis/api";
 import pinBlack from "../images/pinBlack.png";
 import pin from "../images/pin.png";
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 export default function Map() {
   const [posts, setPosts] = useState([]);
