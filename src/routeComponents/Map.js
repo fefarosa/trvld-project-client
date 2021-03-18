@@ -32,7 +32,9 @@ export default function Map() {
 
   const getPosts = async () => {
     try {
-      const response = await axios.get('https://trippin-ironhack.herokuapp.com');
+      const response = await axios.get(
+        "https://git.heroku.com/trippin-ironhack.gitm/trippin-ironhack.git"
+      );
 
       setPosts(response.data);
     } catch (err) {

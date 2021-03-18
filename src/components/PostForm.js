@@ -11,13 +11,16 @@ const PostForm = ({ location, onClose }) => {
   const [formData, setFormData] = useState({});
 
   async function createPost(entry) {
-    const response = await fetch('https://trippin-ironhack.herokuapp.com', {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(entry),
-    });
+    const response = await fetch(
+      "https://git.heroku.com/trippin-ironhack.git",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(entry),
+      }
+    );
     return response.json();
   }
 
@@ -39,7 +42,6 @@ const PostForm = ({ location, onClose }) => {
       const response = await api.post("/upload", uploadData);
 
       return response.data.fileUrl;
-      
     } catch (err) {
       console.error(err);
     }
@@ -73,11 +75,7 @@ const PostForm = ({ location, onClose }) => {
       <label htmlFor="image" ref={register}>
         image
       </label>
-      <input
-        name="image"
-        type="file"
-        onChange={handleChange}
-      />
+      <input name="image" type="file" onChange={handleChange} />
       <label htmlFor="description" ref={register}>
         description
       </label>
@@ -88,9 +86,9 @@ const PostForm = ({ location, onClose }) => {
       <input name="startDate" type="date" required onChange={handleChange} />
       <p className="mandatory-items">* these fields need to be filled out</p>
       <div className="buttons-details">
-      <button type="submit" disabled={loading}>
-        {loading ? "loading..." : "add pin"}
-      </button>
+        <button type="submit" disabled={loading}>
+          {loading ? "loading..." : "add pin"}
+        </button>
       </div>
     </form>
   );

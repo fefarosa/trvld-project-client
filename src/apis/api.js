@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apis = {
-  development: "http://localhost:4000",
+  development: "https://git.heroku.com/trippin-ironhack.git",
   production: "https://trippin-ironhack.herokuapp.com",
 };
 
