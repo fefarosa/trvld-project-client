@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./Signup.css";
+import "./Login.css";
 import { Link, useHistory } from "react-router-dom";
 
 import TextInput from "../../components/TextInput";
 import api from "../../apis/api";
-import caneta from "../../images/caneta.png";
+import pen from "../../images/pen.png";
 import Navbar from "../../components/Navbar";
 
 function Signup(props) {
@@ -31,43 +31,40 @@ function Signup(props) {
       const response = await api.post("/signup", state);
       setErrors({ name: "", password: "", email: "" });
       history.push("/my-map");
-      console.log(response)
+      console.log(response);
     } catch (err) {
       console.error(err.response);
-      setErrors({ ...error, ...err.response.data.error });
+      setErrors({ ...error, ...err.response.data.errors });
     }
   }
 
   return (
     <div>
-    <Navbar />
+      <Navbar />
       <form onSubmit={handleSubmit}>
         <div className="title-image">
-        <img className="img-center" src={caneta} alt="caneta" />
+          <img className="img-center" src={pen} alt="pen" />
         </div>
-        <div className="center">
+        <div className="center-login">
+          <TextInput
+            label="name"
+            name="name"
+            type="text"
+            id="signupFormName"
+            value={state.name}
+            onChange={handleChange}
+            error={error.name}
+          />
+          <TextInput
+            label="e-mail"
+            name="email"
+            type="email"
+            id="signupFormEmail"
+            value={state.email}
+            onChange={handleChange}
+            error={error.email}
+          />
             <TextInput
-              label="name"
-              name="name"
-              type="text"
-              id="signupFormName"
-              value={state.name}
-              onChange={handleChange}
-              error={error.name}
-            />
-            
-            <TextInput
-              label="e-mail"
-              name="email"
-              type="email"
-              id="signupFormEmail"
-              value={state.email}
-              onChange={handleChange}
-              error={error.email}
-            />
-            
-            <div className="div-input">
-            <TextInput 
               label="password"
               name="password"
               type="password"
@@ -77,21 +74,16 @@ function Signup(props) {
               hint="password must be at least 8 characters long, must include at least one uppercase letter, one lowercase letter, one number and one special character."
               error={error.password}
             />
-            </div>
-            </div>
-
-            <div className="div-button">
-              <div className="btn" ><button type="submit">
-                sign up
-              </button></div>
-              <div className="go-to-signup-login">
-              <Link className="link" to="/login">
-                already have an account? 
-                <br/>
-                click here to login.
-              </Link>
-              </div>
-            </div>
+        </div>
+        <div className="btn-link">
+            <button type="submit">sign up</button>
+        </div>
+          <div className="go-to-signup-login">
+            <Link className="link" to="/login">
+              already have an account?
+              <p>click here to login.</p>
+            </Link>
+          </div>
       </form>
     </div>
   );

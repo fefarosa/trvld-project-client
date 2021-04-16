@@ -53,7 +53,6 @@ function Login(props) {
           <img className="img-center" src={enter} alt="login" />
         </div>
         <div className="center-login">
-          <div className="div-input-login">
             <TextInput
               label="e-mail"
               name="email"
@@ -62,9 +61,6 @@ function Login(props) {
               value={state.email}
               onChange={handleChange}
             />
-          </div>
-
-          <div className="div-input-login">
             <TextInput
               label="password"
               name="password"
@@ -73,19 +69,15 @@ function Login(props) {
               value={state.password}
               onChange={handleChange}
             />
-          </div>
         </div>
-        <div className="div-button">
-          <div className="btn">
+        <div className="btn-link">
             <button type="submit">log in</button>
-          </div>
-          <div className="go-to-signup-login">
+        </div>
+        <div className="go-to-signup-login">
           <Link to="/signup">
           don't have an account?
-          <br/>
-          click here to sign up.
+          <p>click here to sign up.</p>
           </Link>
-          </div>
         </div>
       </form>
     </div>

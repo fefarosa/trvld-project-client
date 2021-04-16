@@ -5,11 +5,10 @@
 }
 
 .post-form input {
-  width: 55vw;
+  width: 60vw;
 }
 
 .post-form label {
-  font-family: "Nunito", sans-serif;
   font-weight: 900;
 }
 
@@ -23,28 +22,23 @@
 }
 
 .buttons-details button {
-  width: 90px;
+  border-radius: 10px;
+  min-width: 15vw;
+  max-width: 85px;
   height: 26px;
-  font-size: 12px;
-  line-height: 13px;
-  margin: 5px;
+  font-size: 0.875rem;
+  line-height: 0.9375rem;
+  margin: 4%;
 }
 
 .mandatory-items {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  align-content: center;
-  margin-bottom: 25px;
-  font-size: 10px;
+  margin-bottom: 5%;
+  font-size: 0.625rem;
   color: gray;
-  margin-left: 0px;
-  margin-right: 10px;
   text-align: start;
 }
 
 .post-form label {
-  margin-bottom: 2px;
-  margin-top: 5px;
+  margin-bottom: 0.5%;
+  margin-top: 1.5%;
 }

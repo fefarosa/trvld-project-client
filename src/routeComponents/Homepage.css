@@ -1,68 +1,60 @@
 body {
   background-color: rgb(159, 206, 211);
-  margin: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
   font-family: "Nunito", sans-serif;
-  font-weight: 600;
-}
-
-.homepage {
-  height: 40vh;
-  margin: 35%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .home-title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   height: 15vh;
   margin-top: 25%;
   margin-bottom: 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: "Nunito", sans-serif;
-  font-weight: 900;
 }
 
 .home-title h1 {
-  font-family: "Nunito", sans-serif;
   font-weight: 900;
   margin-top: 5%;
-  margin-bottom: 0;
 }
 
 .home-title img {
-  height: 90px;
+  height: 12vh;
   width: auto;
+}
+
+.btn-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 3%;
+}
+
+.btn-link a {
+  background-color: rgb(252, 168, 11);
+  color: black;
+  text-align: center;
+  border-radius: 10px;
+  width: 25vw;
+}
+
+.instructions p {
+  text-align: center;
+  margin: 1% 5%;
 }
 
 .info-footer {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
-  align-content: center;
-  clear: both;
   position: absolute;
   bottom: 0;
-  width: 100%;
-  height: 60px;
-  margin-bottom: 25px;
+  width: 100vw;
+  height: 15vh;
+  margin-bottom: 0%;
 }
 
-.btn-link {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 25px;
-}
-
-.github-box {
+.github-box, a {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,17 +64,4 @@ body {
 .github-box a {
   text-decoration: none;
   color: black;
-}
-
-.btn-link a {
-  background-color: rgb(252, 168, 11);
-  color: black;
-  border-radius: 10px;
-  width: 80px;
-  text-align: center;
-}
-
-.instructions p {
-  text-align: center;
-  margin: 2px 5px;
 }

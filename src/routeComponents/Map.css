@@ -1,16 +1,17 @@
 .marker {
-  height: 25px;
+  height: 3vh;
   width: auto;
   transform: translate(-50%, -100%);
   z-index: -99;
 }
 
 .title {
-  margin-top: 15px;
   color: rgb(208, 136, 3);
-  font-size: 14px;
   display: flex;
   justify-content: center;
+  margin-top: 3%;
+  font-weight: 900;
+  font-size: 0.9375rem;
 }
 
 .location-image {
@@ -27,12 +28,13 @@
 
 .mapboxgl-popup-close-button {
   padding: 0;
-  width: 25px;
+  width: 5%;
 }
 
 .popup {
   min-width: 55vw;
   max-width: 60vw;
+  min-height: auto;
   max-height: 80vh;
   display: flex;
   flex-direction: column;
@@ -42,54 +44,32 @@
 }
 
 .dates {
-  margin: 2px;
-  font-size: 14px;
-}
-
-.buttons-details {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: absolute;
-  bottom: 0;
-}
-
-.buttons-details button {
-  width: 70px;
-  height: 26px;
-  font-size: 12px;
-  line-height: 13px;
-  margin: 5px;
+  margin: 1%;
+  font-size: 0.875rem;
 }
 
 .created-at-post {
   font-size: 10px;
-  margin-bottom: 0;
   color: gray;
-  margin-left: 0px;
-  margin-right: 10px;
+  margin: 0;
   text-align: start;
 }
 
 .created-at-update {
-  font-size: 10px;
-  margin-bottom: 0;
-  color: gray;
-  margin-right: 0px;
-  margin-left: 10px;
+  font-size: 0.625rem;
+  margin: 0;
   text-align: end;
 }
 
 .created-at-div {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  align-content: center;
-  margin-bottom: 25px;
+  justify-content: space-between;
+  margin-bottom: 5%;
+  color: gray;
 }
 
 .description {
-  font-size: 16px;
+  margin: 5%;
+  font-size: 1rem;
   text-align: center;
 }
